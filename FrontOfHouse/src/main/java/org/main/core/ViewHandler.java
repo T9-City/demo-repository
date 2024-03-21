@@ -50,6 +50,12 @@ public class ViewHandler {
         showView(viewController,null);
     }
 
+    public void openBookingView(){
+        ViewControllerFactory.clearViews();
+        viewController = ViewControllerFactory.getViewController(Views.BOOKING);
+        showView(viewController, null);
+    }
+
    private void showView(ViewController viewController, Pane pane)
    {
        Platform.runLater(() ->{
