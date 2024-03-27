@@ -1,20 +1,25 @@
 package org.main.booking;
 
-//import java.util.Date;
+
+import java.time.LocalDateTime;
 
 public class Booking {
     private String customerName;
     private int covers;
-    private int phoneNo;
+    private String phoneNo;
+    private LocalDateTime bookingDateTime;
+    private Boolean specialBooking;
 
-    //Using string for now for simplicity reasons will probaly implement java.util.Date
-    private String bookingTime;
+    // Confirmed / Cancelled / ETC
+    //private String status;
 
-    public Booking(String customerName, int covers, int phoneNo, String bookingTime) {
+    public Booking(String customerName, int covers, String phoneNo, LocalDateTime bookingDateTime, Boolean specialBooking) {
         this.customerName = customerName;
         this.covers = covers;
         this.phoneNo = phoneNo;
-        this.bookingTime = bookingTime;
+        this.bookingDateTime = bookingDateTime;
+        //this.status = status;
+        this.specialBooking = specialBooking;
     }
 
     @Override
@@ -22,7 +27,49 @@ public class Booking {
         return "Booking \n " +
                 "Name: " + customerName +"\n" +
                 "Phone Number: " + phoneNo +"\n" +
-                "Time: " + bookingTime +"\n" +
+                "Time: " + bookingDateTime +"\n" +
                 "Covers: " + covers +"\n";
+
+                //"Status: " + status +"\n";
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public int getCovers() {
+        return covers;
+    }
+
+    public LocalDateTime getBookingDateTime() {
+        return bookingDateTime;
+    }
+
+    public Boolean getSpecialBooking() {
+        return specialBooking;
+    }
+
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public void setCovers(int covers) {
+        this.covers = covers;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public void setBookingDateTime(LocalDateTime bookingDateTime) {
+        this.bookingDateTime = bookingDateTime;
+    }
+
+    public void setSpecialBooking(Boolean specialBooking) {
+        this.specialBooking = specialBooking;
     }
 }
