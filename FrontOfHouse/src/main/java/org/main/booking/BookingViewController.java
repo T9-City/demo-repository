@@ -22,19 +22,19 @@ public class BookingViewController extends ViewController {
     @FXML
     private Button addBookingButton;
     @FXML
+    private Button addSpecialBookingButton;
+    @FXML
     private TextField customerNameTextField;
     @FXML
     private TextField phoneNumberTextField;
     @FXML
-    private CheckBox specialBookingCheckBox;
+    private ComboBox<Integer> coversComboBox;
     @FXML
-    private ComboBox<Integer> coversTextField;
+    private ComboBox<Integer> specialComboBox;
     @FXML
     private DatePicker bookingDatePicker;
     @FXML
     private TextField bookingTimeField;
-
-
 
     private BookingViewModel bookingViewModel;
 
@@ -43,16 +43,27 @@ public class BookingViewController extends ViewController {
         bookingViewModel = ViewModelFactory.getInstance().getBookingViewModel();
         bookingListView.setItems(bookingViewModel.getBookings());
 
+        initCoversComboBox();
         setUpActions();
     }
 
     private void setUpActions(){
         addBookingButton.setOnAction(e -> onAddBooking());
+        addSpecialBookingButton.setOnAction(e -> onAddSpecialBooking());
         bookingListView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 onBookingSelected(newSelection);
             }
         });
+    }
+
+    private void initCoversComboBox() {
+        // Gotta check how many a special booking is
+        coversComboBox.getItems().addAll(1, 2, 3, 4, 5);
+        coversComboBox.getSelectionModel().selectFirst();
+
+        specialComboBox.getItems().addAll(6, 7, 8, 9, 10);
+        coversComboBox.getSelectionModel().selectFirst();
     }
 
     private void onBookingSelected(Booking booking){
@@ -83,44 +94,34 @@ public class BookingViewController extends ViewController {
         }
     }
 
-
     private void onAddBooking(){
+        int covers = coversComboBox.getValue();
+        createBooking(covers);
+    }
+
+    private void onAddSpecialBooking() {
+        int covers = specialComboBox.getValue();
+        createBooking(covers);
+    }
+
+    private void createBooking(int covers){
+        String status = "CONFIRMED";
         String customerName = customerNameTextField.getText();
         String phoneNumber = phoneNumberTextField.getText();
 
-        //--- Right now before I implement the combobox and checkbox ---
-        //ComboBox covers = null;
-        int covers = 1;
-
-        Boolean specialBooking = false;
-        //CheckBox specialBooking = null;
-        //^^^ Right now before I implement the combobox and checkbox ^^^
+        boolean specialBooking = true;
 
         LocalDateTime dateTime = LocalDateTime.of(bookingDatePicker.getValue(),
                 LocalDateTime.parse(bookingTimeField.getText()).toLocalTime());
 
-        //bookingTimeField.setText(booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        Booking newBooking = new Booking(customerName, covers, phoneNumber, dateTime, specialBooking, status);
 
-        //String status = null;
-
-        Booking newBooking = new Booking(customerName, covers, phoneNumber, dateTime, specialBooking);
+        bookingViewModel.addBooking(newBooking);
 
         customerNameTextField.clear();
         phoneNumberTextField.clear();
         bookingDatePicker.setValue(null);
         bookingTimeField.clear();
-
-        //Need to add covers and special booking later
-    }
-
-    private void onCancelBooking(){
-        Booking selectedBooking = bookingListView.getSelectionModel().getSelectedItem();
-        if (selectedBooking != null) {
-            bookingViewModel.cancelBooking(selectedBooking.getPhoneNo());
-        }
-        else {
-            showAlert("No booking selected", "Select a booking to cancel.");
-        }
     }
 
     private void showAlert(String title, String content) {
