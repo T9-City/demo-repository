@@ -14,7 +14,6 @@ import org.main.view.ViewController;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class BookingViewController extends ViewController {
     @FXML
@@ -30,7 +29,7 @@ public class BookingViewController extends ViewController {
     @FXML
     private ComboBox<Integer> coversComboBox;
     @FXML
-    private ComboBox<Integer> specialComboBox;
+    private CheckBox specialComboBox;
     @FXML
     private DatePicker bookingDatePicker;
     @FXML
@@ -49,7 +48,7 @@ public class BookingViewController extends ViewController {
 
     private void setUpActions(){
         addBookingButton.setOnAction(e -> onAddBooking());
-        addSpecialBookingButton.setOnAction(e -> onAddSpecialBooking());
+        //addSpecialBookingButton.setOnAction(e -> onAddSpecialBooking());
         bookingListView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 onBookingSelected(newSelection);
@@ -59,11 +58,9 @@ public class BookingViewController extends ViewController {
 
     private void initCoversComboBox() {
         // Gotta check how many a special booking is
-        coversComboBox.getItems().addAll(1, 2, 3, 4, 5);
+        coversComboBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
         coversComboBox.getSelectionModel().selectFirst();
 
-        specialComboBox.getItems().addAll(6, 7, 8, 9, 10);
-        coversComboBox.getSelectionModel().selectFirst();
     }
 
     private void onBookingSelected(Booking booking){
@@ -99,10 +96,10 @@ public class BookingViewController extends ViewController {
         createBooking(covers);
     }
 
-    private void onAddSpecialBooking() {
-        int covers = specialComboBox.getValue();
-        createBooking(covers);
-    }
+//    private void onAddSpecialBooking() {
+//        int covers = specialComboBox.getValue();
+//        createBooking(covers);
+//    }
 
     private void createBooking(int covers){
         String status = "CONFIRMED";
