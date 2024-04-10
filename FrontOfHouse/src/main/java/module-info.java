@@ -3,6 +3,10 @@ module FrontOfHouse {
     requires javafx.base;
     requires javafx.fxml;
     requires javafx.graphics;
+    requires java.sql;
 
     opens org.main;
+    exports org.main.view.login to javafx.graphics, javafx.fxml;
+    exports org.main.application to javafx.graphics, javafx.fxml;
+    opens org.main.view.login to javafx.fxml, javafx.base;
 }

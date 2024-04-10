@@ -5,6 +5,7 @@ import javafx.scene.layout.Region;
 import org.main.utils.Views;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,18 +19,15 @@ public class ViewControllerFactory {
 
         if (viewController == null) {
             switch (id) {
-                case LOGIN:
-                    viewController = createNewViewController("login/LoginView.fxml");
-                    break;
-                case BOOKING:
-                    viewController = createNewViewController("booking/BookingView.fxml");
-
+                case LOGIN -> viewController = createNewViewController("/org/main/view/login/LoginView.fxml");
+                case BOOKING -> viewController = createNewViewController("/org/main/view/booking/BookingView.fxml");
             }
-            viewControllers.put(id, viewController);
+                viewControllers.put(id, viewController);
+            }
+            viewController.init();
+            return viewController;
         }
-        viewController.init();
-        return viewController;
-    }
+
 
     private static ViewController createNewViewController(String path) {
         ViewController controller = null;
@@ -45,9 +43,9 @@ public class ViewControllerFactory {
         return controller;
     }
 
-    public static void clearViews() {
-        viewControllers.clear();
+
+        public static void clearViews () {
+            viewControllers.clear();
+        }
+
     }
-
-
-}
