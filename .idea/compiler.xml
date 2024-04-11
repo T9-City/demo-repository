@@ -9,8 +9,5 @@
         <module name="FrontOfHouse" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="FrontOfHouse" target="19" />
-    </bytecodeTargetLevel>
   </component>
 </project>
