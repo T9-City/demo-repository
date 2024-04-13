@@ -36,6 +36,20 @@ public class TableViewController extends ViewController {
             TableImg7,TableImg8,TableImg9,TableImg10,TableImg11,TableImg12,TableImg13,
             TableImg14,TableImg15;
 
+    @FXML
+    void handleButtonAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AssignTableView.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Assign Table View");
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("Cant load new window");
+        }
+    }
+
     private ViewHandler viewHandler;
     private TableViewModel tableViewModel;
     private Map<CheckBox, ImageView> tableMap =new HashMap<>();
@@ -43,10 +57,10 @@ public class TableViewController extends ViewController {
     Image TblBlueSq1 = new Image(getClass().getResourceAsStream("BlueSquare.png"));
     Image TblGreySq1 = new Image(getClass().getResourceAsStream("GreySquare.jpg"));
 
- public void handleButtonAction(ActionEvent actionEvent) {
-    }
+// public void handleButtonAction(ActionEvent actionEvent) {
+//    }
 
-
+    @FXML
     public void ChangeColour(ActionEvent event) {
         CheckBox checkBox = (CheckBox) event.getSource();
         ImageView imageView = tableMap.get(checkBox);
@@ -54,8 +68,6 @@ public class TableViewController extends ViewController {
             imageView.setImage(checkBox.isSelected()?TblBlueSq1:TblGreySq1);
         }
     }
-
-    @FXML
 
 
     public void init(){
