@@ -11,6 +11,11 @@ public class initialCon {
     private static String password = "d3zcNs5ket0"; // Database password
 
     private static Connection con;
+    public static Connection getConnection() throws SQLException{
+        return DriverManager.getConnection(url,user,password);
+    }
+
+
 
     public static void main(String[] args) {
         try {

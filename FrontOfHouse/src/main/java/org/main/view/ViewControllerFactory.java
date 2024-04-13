@@ -21,6 +21,7 @@ public class ViewControllerFactory {
             switch (id) {
                 case LOGIN -> viewController = createNewViewController("/org/main/view/login/LoginView.fxml");
                 case BOOKING -> viewController = createNewViewController("/org/main/view/booking/BookingView.fxml");
+                case TABLES -> viewController = createNewViewController("/org/main/view/table/TableView.fxml");
             }
                 viewControllers.put(id, viewController);
             }

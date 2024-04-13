@@ -14,11 +14,13 @@ public class KitchenImpl implements Kitchen {
 
     @Override
     public boolean isDishAvailable(int dishID) {
+
         return false;
     }
 
     @Override
     public boolean isDishAvailable(Dish dish) {
+
         return false;
     }
 }
