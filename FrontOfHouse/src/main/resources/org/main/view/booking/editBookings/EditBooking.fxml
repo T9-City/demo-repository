@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" prefHeight="400" prefWidth="600" spacing="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.view.booking.editBookings.EditBookingViewController">
+
+    <Label text="Edit Booking" translateY="-50.0">
+      <font>
+         <Font name="System Bold" size="25.0" />
+      </font></Label>
+    <TextField fx:id="customerFistNameTextField" maxWidth="300" promptText="Customer Name" translateY="-50.0" />
+    <TextField fx:id="customerSurnameTextField" maxWidth="300" promptText="Customer Name" translateY="-50.0" />
+    <TextField fx:id="phoneNumberTextField" maxWidth="300" promptText="Phone Number" translateY="-50.0" />
+    <DatePicker fx:id="bookingDatePicker" maxWidth="300" promptText="Choose Date" translateY="-50.0" />
+    <HBox alignment="CENTER" spacing="10.0" translateY="-25.0">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select Time" />
+        <ComboBox fx:id="hoursComboBox" maxWidth="145" promptText="Hours" />
+        <ComboBox fx:id="minutesComboBox" maxWidth="145" promptText="Minutes" />
+    </HBox>
+    <HBox alignment="BASELINE_CENTER" spacing="30.0">
+        <ComboBox fx:id="coversComboBox" maxWidth="145" promptText="Covers" />
+        <CheckBox fx:id="specialComboBox" text="Special Booking" />
+    </HBox>
+    <HBox alignment="CENTER" spacing="10" translateY="25.0">
+        <Button fx:id="cancelBookingButton" onAction="#onCancelBooking" style="-fx-pref-width: 100px;" text="Cancel" />
+        <Button fx:id="confirmBookingButton" onAction="#onConfirmBooking" style="-fx-pref-width: 100px;" text="Confirm" />
+    </HBox>
+
+</VBox>
