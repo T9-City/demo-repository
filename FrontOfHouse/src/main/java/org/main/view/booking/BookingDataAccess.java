@@ -54,6 +54,9 @@ public class BookingDataAccess {
                 bookings.add(new Booking(customerFirstName, customerSurname, phoneNo, date, covers, time, specialBooking));
             }
         }
+        catch (SQLException e) {
+            throw e;
+        }
         return bookings;
     }
 
