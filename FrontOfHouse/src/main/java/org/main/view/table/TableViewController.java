@@ -1,5 +1,6 @@
 package org.main.view.table;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -53,21 +54,14 @@ public class TableViewController extends ViewController {
         CheckBox checkBox = (CheckBox) event.getSource();
         ImageView imageView = tableMap.get(checkBox);
         if (imageView!= null){
-
             boolean isAvailable = checkBox.isSelected();
-            imageView.setImage(isAvailable?TblBlueSq1:TblGreySq1);
+            int tableNo = extractTableNumberFromCheckBox(checkBox.getId());
 
-            try{
-                int tableNo = extractTableNumberFromCheckBox(checkBox.getId());
-                if(tableNo>0){
-                    tablesDB.setTableAvailability(tableNo, isAvailable);
-                }else{
+            if(tableNo>0){
+                updateTableAvailability(tableNo, isAvailable, checkBox, imageView);
+            } else{
                     System.err.println("invalid table number skipping db update");
                 }
-
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
         }
     }
 
@@ -91,25 +85,44 @@ public class TableViewController extends ViewController {
 
 
     public void init(){
-       tableMap.put(AvailabilityCheckBox1,TableImg1);
-       tableMap.put(AvailabilityCheckBox2,TableImg2);
-       tableMap.put(AvailabilityCheckBox3,TableImg3);
-       tableMap.put(AvailabilityCheckBox4,TableImg4);
-       tableMap.put(AvailabilityCheckBox5,TableImg5);
-       tableMap.put(AvailabilityCheckBox6,TableImg6);
-       tableMap.put(AvailabilityCheckBox7,TableImg7);
-       tableMap.put(AvailabilityCheckBox8,TableImg8);
-       tableMap.put(AvailabilityCheckBox9,TableImg9);
-       tableMap.put(AvailabilityCheckBox10,TableImg10);
-       tableMap.put(AvailabilityCheckBox11,TableImg11);
-       tableMap.put(AvailabilityCheckBox12,TableImg12);
-       tableMap.put(AvailabilityCheckBox13,TableImg13);
-       tableMap.put(AvailabilityCheckBox14,TableImg14);
-       tableMap.put(AvailabilityCheckBox15,TableImg15);
-//       tableMap.forEach((checkBox, imageView) -> {
-//         checkBox.setOnAction(event -> imageView.setImage(checkBox.isSelected()? TblBlueSq1: TblGreySq1));
-//       });
+        for (int i = 1; i<=15; i++){
+            final int tableNum = i;
+            try{
+            CheckBox checkBox = (CheckBox) getClass().getDeclaredField("AvailabilityCheckBox"+i).get(this);
+            ImageView imageView = (ImageView) getClass().getDeclaredField("TableImg"+i).get(this);
+            tableMap.put(checkBox,imageView);
+
+            boolean isAvailable = tablesDB.isTableAvailability(i);
+            checkBox.setSelected(isAvailable);
+            imageView.setImage(isAvailable?TblBlueSq1:TblGreySq1);
+            checkBox.setOnAction(event ->{
+                boolean newSt = checkBox.isSelected();
+                updateTableAvailability(tableNum, newSt,checkBox,imageView);
+            });
+            }catch (NoSuchFieldException|IllegalAccessException e){
+                e.printStackTrace();
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+
+
        this.tableViewModel = ViewModelFactory.getInstance().getTableViewModel();
        this.viewHandler = viewHandler.getInstance();
     }
+
+    private void updateTableAvailability(int tableNo, boolean isAvailable, CheckBox checkBox, ImageView imageView){
+            new Thread(()->{
+                try{
+                tablesDB.setTableAvailability(tableNo,!isAvailable);
+                Platform.runLater(()-> {
+                    imageView.setImage(isAvailable ? TblBlueSq1 : TblGreySq1);
+                    checkBox.setSelected(isAvailable);
+                });
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
 }

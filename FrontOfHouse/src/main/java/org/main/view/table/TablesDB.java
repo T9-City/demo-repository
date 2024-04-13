@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class TablesDB {
@@ -26,6 +28,24 @@ public class TablesDB {
         return false;
 
     }
+
+    public Map<Integer,Boolean> getTableAvailability() throws SQLException{
+
+        Map<Integer,Boolean> availabilityMap = new HashMap<>();
+        String Sqlget = "SELECT tableNo, booked FROM tablesTest";
+        try (Connection conn = initialCon.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement(Sqlget);
+        ResultSet rs = pstmt.executeQuery()){
+            while (rs.next()){
+                int tableNo = rs.getInt("tableNo");
+                boolean isBooked = rs.getInt("booked")!= 0;
+                availabilityMap.put(tableNo, !isBooked);
+            }
+
+        }
+        return availabilityMap;
+    }
+
     public void setTableAvailability(int tableNo, boolean available) throws SQLException{
         String sqlUpdate  = "UPDATE tablesTest SET booked = ? WHERE tableNo = ?";
         try (Connection conn = initialCon.getConnection();
