@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.view.booking.viewBookings.ViewBookingViewController">
+    <children>
+        <SplitPane dividerPositions="0.3" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <ListView fx:id="bookingListView" layoutY="59.0" prefHeight="305.0" prefWidth="176.0" />
+                        <Label layoutX="10.0" layoutY="29.0" text="Bookings List">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                        <Button fx:id="newBookingButton" layoutX="10.0" layoutY="365.0" onAction="#onCreateNewBooking" text="New Booking" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="355.0" prefWidth="416.0">
+                    <children>
+                        <Label layoutX="10.0" layoutY="29.0" text="Details">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                        <GridPane hgap="10" layoutX="14.0" layoutY="80.0" vgap="10">
+                            <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <font>
+                           <Font size="15.0" />
+                        </font></Label>
+                            <Label fx:id="nameLabel" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <font>
+                           <Font size="15.0" />
+                        </font></Label>
+                            <Label text="Phone No:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <font>
+                           <Font size="15.0" />
+                        </font></Label>
+                            <Label fx:id="phoneLabel" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <font>
+                           <Font size="15.0" />
+                        </font></Label>
+                            <Label text="Date:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                        <font>
+                           <Font size="15.0" />
+                        </font></Label>
+                            <Label fx:id="dateLabel" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <font>
+                           <Font size="15.0" />
+                        </font></Label>
+                            <Label text="Time:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                        <font>
+                           <Font size="15.0" />
+                        </font></Label>
+                            <Label fx:id="timeLabel" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <font>
+                           <Font size="15.0" />
+                        </font></Label>
+                            <Label text="Covers:" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                        <font>
+                           <Font size="15.0" />
+                        </font></Label>
+                            <Label fx:id="coversLabel" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <font>
+                           <Font size="15.0" />
+                        </font></Label>
+                            <Label text="Special Booking:" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                        <font>
+                           <Font size="15.0" />
+                        </font></Label>
+                            <Label fx:id="specialLabel" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <font>
+                           <Font size="15.0" />
+                        </font></Label>
+                     <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints>
+                        </GridPane>
+                        <Button fx:id="editBookingButton" layoutX="10.0" layoutY="365.0" onAction="#onEditBooking" text="Edit Booking" />
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+      <AnchorPane prefHeight="30.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="closeButton" layoutX="574.0" layoutY="2.0" mnemonicParsing="false" text="X" />
+            <Text layoutX="10.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Bookings">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>
