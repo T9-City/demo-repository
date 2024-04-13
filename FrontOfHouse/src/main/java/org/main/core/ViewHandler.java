@@ -11,7 +11,6 @@ import javafx.stage.StageStyle;
 import org.main.utils.Views;
 import org.main.view.ViewController;
 import org.main.view.ViewControllerFactory;
-import org.main.view.booking.editBookings.EditBookingViewController;
 
 public class ViewHandler {
 
@@ -42,15 +41,14 @@ public class ViewHandler {
         if(stage.getScene() == null) stage.initStyle(StageStyle.TRANSPARENT);
         //openLoginView();
         openBookingView();
-        //openCreateBookingView();
     }
 
-//    public void openLoginView()
-//    {
-//        ViewControllerFactory.clearViews();
-//        viewController = ViewControllerFactory.getViewController(Views.LOGIN);
-//        showView(viewController,null);
-//    }
+    public void openLoginView()
+    {
+        ViewControllerFactory.clearViews();
+        viewController = ViewControllerFactory.getViewController(Views.LOGIN);
+        showView(viewController,null);
+    }
 
     public void openBookingView() {
         ViewControllerFactory.clearViews();
@@ -58,18 +56,18 @@ public class ViewHandler {
         showView(viewController,null);
     }
 
-    public void openCreateBookingView(){
+    public void openCreateBookingView() {
         ViewControllerFactory.clearViews();
         viewController = ViewControllerFactory.getViewController(Views.CREATE_BOOKING);
         showView(viewController,null);
     }
 
-    public void openEditBookingView(){
+    public void openEditBookingView() {
         ViewControllerFactory.clearViews();
-        EditBookingViewController controller = (EditBookingViewController) ViewControllerFactory.getViewController(Views.EDIT_BOOKINGS);
-        //controller.setBooking(booking);
-        showView(controller, null);
+        viewController = ViewControllerFactory.getViewController(Views.EDIT_BOOKINGS);
+        showView(viewController,null);
     }
+
 
    private void showView(ViewController viewController, Pane pane)
    {
@@ -120,6 +118,7 @@ public class ViewHandler {
            }
        });
    }
+
 
 
 }

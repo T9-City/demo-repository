@@ -21,5 +21,8 @@ public class ViewBookingViewModel {
     public ObservableList<Booking> getBookings() {
         return bookings;
     }
+
+    public void addBooking(Booking newBooking) {
+    }
 }
 

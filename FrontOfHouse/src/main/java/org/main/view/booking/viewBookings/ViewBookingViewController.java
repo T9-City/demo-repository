@@ -69,15 +69,6 @@ public class ViewBookingViewController extends ViewController {
         ((Stage) closeButton.getScene().getWindow()).close();
     }
 
-//    public void initBookingsList() {
-//        try {
-//            ObservableList<Booking> bookings = FXCollections.observableArrayList(bookingDataAccess.getAllBookingDB());
-//            bookingListView.setItems(bookings);
-//        }
-//        catch (Exception e) {
-//            showAlert("Database Error", "Error retrieving bookings from the database: " + e);
-//        }
-//    }
 
     public void initBookingsList() {
         try {
