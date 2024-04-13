@@ -2,6 +2,7 @@ package org.main.view.table;
 
 import org.main.database.initialCon;
 
+import java.sql.*;
 
 
 import java.sql.Connection;
@@ -11,10 +12,10 @@ import java.sql.SQLException;
 
 
 public class TablesDB {
-    public boolean isTableAvailability(int tableNo) throw SQLException{
+    public boolean isTableAvailability(int tableNo) throws SQLException{
         String SqlQuery = "SELECT booked FROM tablesTest WHERE tableNo = ?";
-        try (Connection conn = intialCon.getConnection();
-            PreparedStatement pstmt = conn.prepareStatement(SqlQuery)) {
+        try (Connection conn = initialCon.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(SqlQuery)) {
             pstmt.setInt(1, tableNo);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
@@ -22,11 +23,10 @@ public class TablesDB {
                 }
             }
         }
-            return false;
+        return false;
 
     }
     public void setTableAvailability(){
 
     }
-
 }
