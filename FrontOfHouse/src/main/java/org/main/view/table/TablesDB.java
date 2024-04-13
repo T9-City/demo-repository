@@ -32,8 +32,8 @@ public class TablesDB {
              PreparedStatement pstmt = conn.prepareStatement(sqlUpdate)){
             pstmt.setInt(1, available?1:0);
             pstmt.setInt(2,tableNo);
-            pstmt.executeUpdate();
-
+            int affectedRows = pstmt.executeUpdate();
+            System.out.println("Rows affected: " + affectedRows);
         }
 
 

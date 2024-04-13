@@ -25,7 +25,7 @@
                             </children></AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="326.0">
                             <children>
-                                <CheckBox fx:id="AvailabilityCheckBox" layoutX="7.0" layoutY="52.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
+                                <CheckBox fx:id="AvailabilityCheckBox1" layoutX="7.0" layoutY="52.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
                                 <ImageView fx:id="TableImg1" fitHeight="25.0" fitWidth="26.0" layoutX="27.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../../../../BlueSquare.png" />
@@ -116,20 +116,20 @@
                         <Label layoutX="29.0" layoutY="295.0" text="13" />
                         <Label layoutX="119.0" layoutY="295.0" text="14" />
                         <Label layoutX="217.0" layoutY="295.0" text="15" />
-                        <CheckBox fx:id="AvailabilityCheckBox1" layoutX="110.0" layoutY="52.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
-                        <CheckBox fx:id="AvailabilityCheckBox2" layoutX="194.0" layoutY="52.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
-                        <CheckBox fx:id="AvailabilityCheckBox3" layoutX="3.0" layoutY="133.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
-                        <CheckBox fx:id="AvailabilityCheckBox4" layoutX="98.0" layoutY="133.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
-                        <CheckBox fx:id="AvailabilityCheckBox5" layoutX="187.0" layoutY="133.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
-                        <CheckBox fx:id="AvailabilityCheckBox6" layoutX="8.0" layoutY="207.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
-                        <CheckBox fx:id="AvailabilityCheckBox7" layoutX="96.0" layoutY="204.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
-                        <CheckBox fx:id="AvailabilityCheckBox8" layoutX="187.0" layoutY="204.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
-                        <CheckBox fx:id="AvailabilityCheckBox9" layoutX="7.0" layoutY="277.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
-                        <CheckBox fx:id="AvailabilityCheckBox10" layoutX="98.0" layoutY="277.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
-                        <CheckBox fx:id="AvailabilityCheckBox11" layoutX="189.0" layoutY="277.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
-                        <CheckBox fx:id="AvailabilityCheckBox12" layoutX="7.0" layoutY="345.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
-                        <CheckBox fx:id="AvailabilityCheckBox13" layoutX="108.0" layoutY="345.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
-                        <CheckBox fx:id="AvailabilityCheckBox14" layoutX="189.0" layoutY="345.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
+                        <CheckBox fx:id="AvailabilityCheckBox2" layoutX="110.0" layoutY="52.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
+                        <CheckBox fx:id="AvailabilityCheckBox3" layoutX="194.0" layoutY="52.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
+                        <CheckBox fx:id="AvailabilityCheckBox4" layoutX="3.0" layoutY="133.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
+                        <CheckBox fx:id="AvailabilityCheckBox5" layoutX="98.0" layoutY="133.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
+                        <CheckBox fx:id="AvailabilityCheckBox6" layoutX="187.0" layoutY="133.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
+                        <CheckBox fx:id="AvailabilityCheckBox7" layoutX="8.0" layoutY="207.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
+                        <CheckBox fx:id="AvailabilityCheckBox8" layoutX="96.0" layoutY="204.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
+                        <CheckBox fx:id="AvailabilityCheckBox9" layoutX="187.0" layoutY="204.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
+                        <CheckBox fx:id="AvailabilityCheckBox10" layoutX="7.0" layoutY="277.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
+                        <CheckBox fx:id="AvailabilityCheckBox11" layoutX="98.0" layoutY="277.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
+                        <CheckBox fx:id="AvailabilityCheckBox12" layoutX="189.0" layoutY="277.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
+                        <CheckBox fx:id="AvailabilityCheckBox13" layoutX="7.0" layoutY="345.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
+                        <CheckBox fx:id="AvailabilityCheckBox14" layoutX="108.0" layoutY="345.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
+                        <CheckBox fx:id="AvailabilityCheckBox15" layoutX="189.0" layoutY="345.0" mnemonicParsing="false" onAction="#ChangeColour" prefHeight="8.0" prefWidth="72.0" text="Available" />
                             </children></AnchorPane>
                     </items>
                 </SplitPane>
