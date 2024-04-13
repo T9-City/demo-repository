@@ -39,7 +39,8 @@ public class ViewHandler {
     {
         stage = new Stage();
         if(stage.getScene() == null) stage.initStyle(StageStyle.TRANSPARENT);
-        openLoginView();
+        //openLoginView();
+        openBookingView();
     }
 
     public void openLoginView()
@@ -48,6 +49,25 @@ public class ViewHandler {
         viewController = ViewControllerFactory.getViewController(Views.LOGIN);
         showView(viewController,null);
     }
+
+    public void openBookingView() {
+        ViewControllerFactory.clearViews();
+        viewController = ViewControllerFactory.getViewController(Views.SHOW_BOOKINGS);
+        showView(viewController,null);
+    }
+
+    public void openCreateBookingView() {
+        ViewControllerFactory.clearViews();
+        viewController = ViewControllerFactory.getViewController(Views.CREATE_BOOKING);
+        showView(viewController,null);
+    }
+
+    public void openEditBookingView() {
+        ViewControllerFactory.clearViews();
+        viewController = ViewControllerFactory.getViewController(Views.EDIT_BOOKINGS);
+        showView(viewController,null);
+    }
+
 
    private void showView(ViewController viewController, Pane pane)
    {
@@ -98,6 +118,7 @@ public class ViewHandler {
            }
        });
    }
+
 
 
 }

@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import org.main.core.ViewModelFactory;
 import org.main.view.ViewController;
 import org.main.view.booking.Booking;
+import org.main.view.booking.viewBookings.ViewBookingViewModel;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -35,12 +36,12 @@ public class CreateBookingViewController extends ViewController {
     private Button confirmBookingButton;
     @FXML
     private Button cancelBookingButton;
-    private CreateBookingViewModel bookingViewModel;
+    private ViewBookingViewModel bookingViewModel;
 
 
     @FXML
     public void init(){
-        //bookingViewModel = ViewModelFactory.getInstance().getBookingViewModel();
+        bookingViewModel = ViewModelFactory.getInstance().getBookingViewModel();
 
         initCoversComboBox();
         initTimeComboBoxes();

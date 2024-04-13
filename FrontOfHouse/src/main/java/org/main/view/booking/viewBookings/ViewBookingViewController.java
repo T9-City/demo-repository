@@ -69,15 +69,6 @@ public class ViewBookingViewController extends ViewController {
         ((Stage) closeButton.getScene().getWindow()).close();
     }
 
-//    public void initBookingsList() {
-//        try {
-//            ObservableList<Booking> bookings = FXCollections.observableArrayList(bookingDataAccess.getAllBookingDB());
-//            bookingListView.setItems(bookings);
-//        }
-//        catch (Exception e) {
-//            showAlert("Database Error", "Error retrieving bookings from the database: " + e);
-//        }
-//    }
 
     public void initBookingsList() {
         try {
@@ -110,19 +101,19 @@ public class ViewBookingViewController extends ViewController {
     }
 
 
-//    @FXML
-//    public void onCreateNewBooking() {
-//        ViewHandler.getInstance().openCreateBookingView();
-//    }
+    @FXML
+    public void onCreateNewBooking() {
+        ViewHandler.getInstance().openCreateBookingView();
+    }
 
-//    @FXML
-//    public void onEditBooking() {
-//        if (bookingListView.getSelectionModel().getSelectedItem() != null) {
-//            ViewHandler.getInstance().openEditBookingView();
-//        } else {
-//            showAlert("Select Booking", "Please select a booking to edit.");
-//        }
-//    }
+    @FXML
+    public void onEditBooking() {
+        if (bookingListView.getSelectionModel().getSelectedItem() != null) {
+            ViewHandler.getInstance().openEditBookingView();
+        } else {
+            showAlert("Select Booking", "Please select a booking to edit.");
+        }
+    }
 
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
