@@ -26,7 +26,16 @@ public class TablesDB {
         return false;
 
     }
-    public void setTableAvailability(){
+    public void setTableAvailability(int tableNo, boolean available) throws SQLException{
+        String sqlUpdate  = "UPDATE tablesTest SET booked = ? WHERE tableNo = ?";
+        try (Connection conn = initialCon.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sqlUpdate)){
+            pstmt.setInt(1, available?1:0);
+            pstmt.setInt(2,tableNo);
+            pstmt.executeUpdate();
+
+        }
+
 
     }
 }
