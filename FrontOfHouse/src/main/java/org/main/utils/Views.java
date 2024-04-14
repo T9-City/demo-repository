@@ -7,4 +7,5 @@ public enum Views {
     CREATE_BOOKING,
     TABLES,
     ORDER,
+    VIEWORDERS,
 }
