@@ -9,12 +9,10 @@ public class ViewBookingViewModel {
 
     public ViewBookingViewModel() {
         this.bookings = FXCollections.observableArrayList();
-        // Load bookings from database
         loadBookings();
     }
 
     private void loadBookings() {
-        // Fetch data from database
 
     }
 

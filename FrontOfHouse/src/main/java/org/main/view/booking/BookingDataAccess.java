@@ -41,14 +41,14 @@ public class BookingDataAccess {
 
             try (ResultSet generatedKeys = stm.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    booking.setId(generatedKeys.getInt(1));  // Set the auto-generated ID back to the booking object
+                    booking.setId(generatedKeys.getInt(1));
                     System.out.println(generatedKeys.getInt(1));
                 } else {
                     throw new SQLException("Creating booking failed, no ID obtained.");
                 }
             }
         }
-        return booking; // Return the booking object, now including the ID
+        return booking;
     }
 
 

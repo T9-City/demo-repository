@@ -47,7 +47,6 @@ public class CreateBookingViewController extends ViewController {
         bookingViewModel = ViewModelFactory.getInstance().getBookingViewModel();
 
         initCoversComboBox();
-        //initSpecialBooking();
         initTimeComboBoxes();
         setUpActions();
     }

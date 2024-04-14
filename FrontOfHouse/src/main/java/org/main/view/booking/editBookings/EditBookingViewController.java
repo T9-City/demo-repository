@@ -134,10 +134,6 @@ public class EditBookingViewController extends ViewController {
         BookingDataAccess.updateBookingDB(currentBooking);
     }
 
-    private void updateBooking() throws SQLException {
-        GetFromTextFields();
-    }
-
     private void initTimeComboBoxes() {
         for (int i = 0; i < 24; i++) {
             hoursComboBox.getItems().add(String.format("%02d", i));
