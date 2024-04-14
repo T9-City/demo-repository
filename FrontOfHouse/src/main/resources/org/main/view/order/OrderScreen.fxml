@@ -43,6 +43,8 @@
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-      <Button fx:id="editingOrders_Btn" layoutX="550.0" layoutY="8.0" mnemonicParsing="false" onAction="#openOrders" text="Edit Orders" />
+      <Button fx:id="editingOrders_Btn" layoutX="384.0" layoutY="8.0" mnemonicParsing="false" onAction="#openOrders" text="Edit Orders" />
+      <Button layoutX="602.0" layoutY="8.0" mnemonicParsing="false" onAction="#close" text="X" />
+      <Button layoutX="573.0" layoutY="8.0" mnemonicParsing="false" onAction="#minimise" text="-" />
     </children>
 </AnchorPane>

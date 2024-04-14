@@ -199,6 +199,14 @@ public class OrderingViewController extends ViewController {
     }
 
     @FXML
+    public void close(ActionEvent event){
+        viewHandler.close();
+    }
+    @FXML
+    public void minimise(ActionEvent event) {
+        viewHandler.minimize();
+    }
+    @FXML
     public void payOrder(ActionEvent event){
         viewHandler.openViewOrders();
         payOrder = true;

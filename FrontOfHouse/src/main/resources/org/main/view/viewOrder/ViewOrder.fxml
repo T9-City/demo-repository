@@ -27,6 +27,8 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="back_btn" layoutX="525.0" layoutY="18.0" mnemonicParsing="false" onAction="#return_to_OrderScreen" prefHeight="26.0" prefWidth="74.0" text="Back" />
+      <Button fx:id="back_btn" layoutX="458.0" layoutY="18.0" mnemonicParsing="false" onAction="#return_to_OrderScreen" prefHeight="26.0" prefWidth="74.0" text="Back" />
+      <Button layoutX="574.0" layoutY="18.0" mnemonicParsing="false" onAction="#close" text="X" />
+      <Button layoutX="547.0" layoutY="18.0" mnemonicParsing="false" onAction="#minimise" text="-" />
    </children>
 </AnchorPane>

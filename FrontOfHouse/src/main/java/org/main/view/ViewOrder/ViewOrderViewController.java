@@ -59,6 +59,15 @@ public class ViewOrderViewController extends ViewController {
         ViewHandler.getInstance().openOrderingView();
     }
 
+    @FXML
+    public void close(ActionEvent event){
+        viewHandler.close();
+    }
+    @FXML
+    public void minimise(ActionEvent event) {
+        viewHandler.minimize();
+    }
+
     public Label getOrder_view_table_label() {
         return order_view_table_label;
     }
