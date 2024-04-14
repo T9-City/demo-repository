@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Booking {
+
+    private Integer id;
     private String dinerFirstName;
     private String dinerSurname;
     private String phoneNo;
@@ -23,6 +25,11 @@ public class Booking {
         this.specialBooking = specialBooking;
     }
 
+    public Booking(int id, String dinerFirstName, String dinerSurname, String phoneNo, LocalDate bookingDate, int covers, LocalTime bookingTime, boolean specialBooking) {
+        this(dinerFirstName, dinerSurname, phoneNo, bookingDate, covers, bookingTime, specialBooking);
+        this.id = id;
+    }
+
     @Override
     public String toString(){
         return "Booking \n " +
@@ -34,6 +41,14 @@ public class Booking {
                 "Covers: " + covers + "\n" +
                 "Special: " + (specialBooking ? "Yes" : "No");
 
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDinerFirstName() {

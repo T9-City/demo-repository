@@ -101,18 +101,33 @@ public class ViewBookingViewController extends ViewController {
     }
 
 
+
     @FXML
     public void onCreateNewBooking() {
         ViewHandler.getInstance().openCreateBookingView();
     }
 
+//    @FXML
+//    public void onEditBooking() {
+//        if (bookingListView.getSelectionModel().getSelectedItem() != null) {
+//            ViewHandler.getInstance().openEditBookingView();
+//        } else {
+//            showAlert("Select Booking", "Please select a booking to edit.");
+//        }
+//    }
+
     @FXML
     public void onEditBooking() {
-        if (bookingListView.getSelectionModel().getSelectedItem() != null) {
-            ViewHandler.getInstance().openEditBookingView();
+        Booking selectedBooking = bookingListView.getSelectionModel().getSelectedItem();
+        if (selectedBooking != null) {
+            ViewHandler.getInstance().openEditBookingView(selectedBooking);
         } else {
             showAlert("Select Booking", "Please select a booking to edit.");
         }
+    }
+
+    public void refreshBookingsList() {
+        initBookingsList();  // Re-fetch and update the ListView
     }
 
     private void showAlert(String title, String content) {
