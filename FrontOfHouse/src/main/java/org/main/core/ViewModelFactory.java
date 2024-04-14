@@ -49,6 +49,7 @@ public class ViewModelFactory {
         return loginViewModel;
     }
 
+
     public ViewBookingViewModel getBookingViewModel() {
         return viewBookingViewModel;
     }
