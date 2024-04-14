@@ -1,0 +1,88 @@
+Index: src/main/java/org/main/core/ViewHandler.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.main.core;\r\n\r\nimport javafx.application.Platform;\r\nimport javafx.event.EventHandler;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.input.MouseEvent;\r\nimport javafx.scene.layout.Pane;\r\nimport javafx.stage.Stage;\r\nimport javafx.stage.StageStyle;\r\nimport org.main.Main;\r\nimport org.main.utils.Views;\r\nimport org.main.view.ViewController;\r\nimport org.main.view.ViewControllerFactory;\r\n\r\npublic class ViewHandler {\r\n\r\n    private Stage stage;\r\n    private Scene scene;\r\n    private ViewController viewController;\r\n    private static ViewHandler viewHandler;\r\n\r\n    private double xOffset;\r\n    private double yOffset;\r\n\r\n    private ViewHandler()\r\n    {\r\n        xOffset = yOffset = 0;\r\n    }\r\n\r\n    public static ViewHandler getInstance()\r\n    {\r\n        if(viewHandler == null) {\r\n            viewHandler = new ViewHandler();\r\n        }\r\n        return viewHandler;\r\n    }\r\n\r\n    public void start()\r\n    {\r\n        stage = new Stage();\r\n        if(stage.getScene() == null) stage.initStyle(StageStyle.TRANSPARENT);\r\n        openLoginView();\r\n    }\r\n\r\n    public void openLoginView()\r\n    {\r\n        ViewControllerFactory.clearViews();\r\n        viewController = ViewControllerFactory.getViewController(Views.LOGIN);\r\n        showView(viewController,null);\r\n    }\r\n\r\n   private void showView(ViewController viewController, Pane pane)\r\n   {\r\n       Platform.runLater(() ->{\r\n           if(pane == null)\r\n           {\r\n               moveWindowsEvents(viewController.getRoot());\r\n               if(scene == null){\r\n                   scene = new Scene(viewController.getRoot());\r\n               }\r\n               scene.setRoot(viewController.getRoot());\r\n\r\n           if (stage == null) {\r\n               stage = new Stage();\r\n       }\r\n\r\n           stage.setScene(scene);\r\n           stage.show();\r\n           }else {\r\n               pane.getChildren().clear();\r\n               pane.getChildren().setAll(viewController.getRoot());\r\n           }\r\n       });\r\n   }\r\n\r\n   public void minimize() {\r\n       stage.setIconified(true);\r\n   }\r\n\r\n   public void resetView() {\r\n        ViewControllerFactory.clearViews();\r\n   }\r\n\r\n   private void moveWindowsEvents(Parent root)\r\n   {\r\n       root.setOnMousePressed(new EventHandler<MouseEvent>() {\r\n           @Override\r\n           public void handle(MouseEvent event) {\r\n               xOffset = event.getSceneX();\r\n               yOffset = event.getSceneY();\r\n           }\r\n       });\r\n       root.setOnMouseDragged(new EventHandler<MouseEvent>() {\r\n           @Override\r\n           public void handle(MouseEvent event) {\r\n               stage.setX(event.getScreenX() - xOffset);\r\n               stage.setY(event.getScreenY() - yOffset);\r\n           }\r\n       });\r\n   }\r\n\r\n\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/main/core/ViewHandler.java b/src/main/java/org/main/core/ViewHandler.java
+--- a/src/main/java/org/main/core/ViewHandler.java	(revision c0a81a64b5cce6bb70971dcf82f2c3eda9328a72)
++++ b/src/main/java/org/main/core/ViewHandler.java	(date 1713135414616)
+@@ -49,8 +49,20 @@
+         viewController = ViewControllerFactory.getViewController(Views.LOGIN);
+         showView(viewController,null);
+     }
++    public void openOrderingView(){
++        ViewControllerFactory.clearViews();
++        viewController = ViewControllerFactory.getViewController(Views.ORDER);
++        showView(viewController, null);
++    }
++
++    public void openViewOrders(){
++        ViewControllerFactory.clearViews();
++        viewController = ViewControllerFactory.getViewController(Views.VIEWORDERS);
++        showView(viewController, null);
++    }
++
+ 
+-   private void showView(ViewController viewController, Pane pane)
++    private void showView(ViewController viewController, Pane pane)
+    {
+        Platform.runLater(() ->{
+            if(pane == null)
+Index: ../.idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"010fddad-87dd-44ac-8ef0-8424ef958b40\" name=\"Changes\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"Abu\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2drgAxBclxEUkAp4knsFQ6NY9JM\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"settings.editor.selected.configurable\": \"configurable.group.appearance\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"010fddad-87dd-44ac-8ef0-8424ef958b40\" name=\"Changes\" comment=\"\" />\r\n      <created>1710771471880</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1710771471880</updated>\r\n      <workItem from=\"1710771473966\" duration=\"465000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../.idea/workspace.xml b/../.idea/workspace.xml
+--- a/../.idea/workspace.xml	(revision c0a81a64b5cce6bb70971dcf82f2c3eda9328a72)
++++ b/../.idea/workspace.xml	(date 1713135272689)
+@@ -1,7 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="010fddad-87dd-44ac-8ef0-8424ef958b40" name="Changes" comment="" />
++    <list default="true" id="010fddad-87dd-44ac-8ef0-8424ef958b40" name="Changes" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -28,10 +30,26 @@
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "WebServerToolWindowFactoryState": "false",
++    "last_opened_file_path": "C:/Users/abuta/Documents/Github Projects/demo-repository/FrontOfHouse",
+     "nodejs_package_manager_path": "npm",
+     "settings.editor.selected.configurable": "configurable.group.appearance"
+   }
+ }]]></component>
++  <component name="RunManager">
++    <configuration default="true" type="JetRunConfigurationType">
++      <module name="demo-repository" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
++      <module name="demo-repository" />
++      <option name="filePath" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++  </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -41,6 +59,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1710771471880</updated>
+       <workItem from="1710771473966" duration="465000" />
++      <workItem from="1713135156829" duration="116000" />
+     </task>
+     <servers />
+   </component>

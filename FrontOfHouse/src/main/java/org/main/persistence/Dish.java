@@ -56,7 +56,7 @@ public class Dish {
      *  Dish pizzaDish = new Dish(123, 1000, "Pizza", "A delicious pizza", new ArrayList&lt;String&gt;(), new ArrayList&lt;String&gt;(), true);
      * </pre>
      */
-    protected Dish(int dishID, int price, String name, String description, ArrayList<String> ingredients, ArrayList<String> allergens, boolean isAvailable) {
+    public Dish(int dishID, int price, String name, String description, ArrayList<String> ingredients, ArrayList<String> allergens, boolean isAvailable) {
         this.dishID = dishID;
         this.price = price;
         this.name = name;

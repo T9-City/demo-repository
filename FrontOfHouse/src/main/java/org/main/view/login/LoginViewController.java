@@ -39,7 +39,7 @@ public class LoginViewController extends ViewController {
         if(loginViewModel.login() && roleTextField.textProperty().getValue().equals("Maitre"));
         viewHandler.openBookingView();
         if(loginViewModel.login() && roleTextField.textProperty().getValue().equals("Waiter") || roleTextField.textProperty().getValue().equals("Sommelier"))
-            viewHandler.openOrderView();
+            viewHandler.openOrderingView();
     }
 
     public void onCloseButton(ActionEvent actionEvent) {
