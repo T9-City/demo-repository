@@ -41,8 +41,8 @@ public class ViewHandler {
     {
         stage = new Stage();
         if(stage.getScene() == null) stage.initStyle(StageStyle.TRANSPARENT);
-        //openLoginView();
-        openBookingView();
+        openLoginView();
+
     }
 
     public void openLoginView()
@@ -129,6 +129,8 @@ public class ViewHandler {
    }
 
 
-
+    public void close() {
+        stage.close();
+    }
 }
 
