@@ -60,7 +60,7 @@ public class TableViewController extends ViewController {
             if(tableNo>0){
                 updateTableAvailability(tableNo, isAvailable, checkBox, imageView);
             } else{
-                    System.err.println("invalid table number skipping db update");
+                    System.err.println("invalid Table Number skipping db update");
                 }
         }
     }
