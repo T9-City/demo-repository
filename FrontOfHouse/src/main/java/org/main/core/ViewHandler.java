@@ -11,6 +11,8 @@ import javafx.stage.StageStyle;
 import org.main.utils.Views;
 import org.main.view.ViewController;
 import org.main.view.ViewControllerFactory;
+import org.main.view.booking.Booking;
+import org.main.view.booking.editBookings.EditBookingViewController;
 
 public class ViewHandler {
 
@@ -62,10 +64,17 @@ public class ViewHandler {
         showView(viewController,null);
     }
 
-    public void openEditBookingView() {
+    public void openEditBookingView(Booking booking) {
+        if (booking.getId() == null) {
+            System.out.println("Warning: Trying to edit a booking without an ID.");
+        }
         ViewControllerFactory.clearViews();
         viewController = ViewControllerFactory.getViewController(Views.EDIT_BOOKINGS);
+        EditBookingViewController controller = (EditBookingViewController) ViewControllerFactory.getViewController(Views.EDIT_BOOKINGS);
+        controller.setBooking(booking);
         showView(viewController,null);
+
+
     }
 
 
