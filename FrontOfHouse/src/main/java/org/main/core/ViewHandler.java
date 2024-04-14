@@ -41,8 +41,7 @@ public class ViewHandler {
     {
         stage = new Stage();
         if(stage.getScene() == null) stage.initStyle(StageStyle.TRANSPARENT);
-        //openLoginView();
-        openTableView();
+        openLoginView();
     }
 
     public void openLoginView()
@@ -81,6 +80,18 @@ public class ViewHandler {
         showView(viewController,null);
 
 
+    }
+
+    public void openOrderingView(){
+        ViewControllerFactory.clearViews();
+        viewController = ViewControllerFactory.getViewController(Views.ORDER);
+        showView(viewController, null);
+    }
+
+    public void openViewOrders(){
+        ViewControllerFactory.clearViews();
+        viewController = ViewControllerFactory.getViewController(Views.VIEWORDERS);
+        showView(viewController, null);
     }
 
 
@@ -135,6 +146,8 @@ public class ViewHandler {
    }
 
 
-
+    public void close() {
+        stage.close();
+    }
 }
 

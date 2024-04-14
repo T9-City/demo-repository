@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="80.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.view.ViewOrder.tableBtnsController">
+   <children>
+      <Button fx:id="tableNoBtn" layoutX="-2.0" mnemonicParsing="false" onAction="#getTableOrder" prefHeight="88.6" prefWidth="150.0" style="-fx-background-color: #283336;" text="Button" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label layoutX="14.0" layoutY="51.0" />
+   </children>
+</AnchorPane>

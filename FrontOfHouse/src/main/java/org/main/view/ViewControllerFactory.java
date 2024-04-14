@@ -20,6 +20,8 @@ public class ViewControllerFactory {
         if (viewController == null) {
             switch (id) {
                 case LOGIN -> viewController = createNewViewController("/org/main/view/login/LoginView.fxml");
+                case ORDER -> viewController = createNewViewController("/org/main/view/order/OrderScreen.fxml");
+                case VIEWORDERS -> viewController = createNewViewController("/org/main/view/ViewOrder/ViewOrder.fxml");
                 case CREATE_BOOKING -> viewController = createNewViewController("/org/main/view/booking/createBookings/CreateBooking.fxml");
                 case SHOW_BOOKINGS -> viewController = createNewViewController("/org/main/view/booking/viewBookings/viewBooking.fxml");
                 case EDIT_BOOKINGS -> viewController = createNewViewController("/org/main/view/booking/editBookings/EditBooking.fxml");
