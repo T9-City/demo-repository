@@ -1,5 +1,6 @@
 package org.main.view.table;
 
+import org.main.database.DBconnection;
 import org.main.database.initialCon;
 
 import java.sql.*;
@@ -16,7 +17,7 @@ import java.util.Map;
 public class TablesDB {
     public boolean isTableAvailability(int tableNo) throws SQLException{
         String SqlQuery = "SELECT booked FROM tablesTest WHERE tableNo = ?";
-        try (Connection conn = initialCon.getConnection();
+        try (Connection conn = DBconnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(SqlQuery)) {
             pstmt.setInt(1, tableNo);
             try (ResultSet rs = pstmt.executeQuery()) {
@@ -33,7 +34,7 @@ public class TablesDB {
 
         Map<Integer,Boolean> availabilityMap = new HashMap<>();
         String Sqlget = "SELECT tableNo, booked FROM tablesTest";
-        try (Connection conn = initialCon.getConnection();
+        try (Connection conn = DBconnection.getConnection();
         PreparedStatement pstmt = conn.prepareStatement(Sqlget);
         ResultSet rs = pstmt.executeQuery()){
             while (rs.next()){
@@ -48,7 +49,7 @@ public class TablesDB {
 
     public void setTableAvailability(int tableNo, boolean available) throws SQLException{
         String sqlUpdate  = "UPDATE tablesTest SET booked = ? WHERE tableNo = ?";
-        try (Connection conn = initialCon.getConnection();
+        try (Connection conn = DBconnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sqlUpdate)){
             pstmt.setInt(1, available?1:0);
             pstmt.setInt(2,tableNo);

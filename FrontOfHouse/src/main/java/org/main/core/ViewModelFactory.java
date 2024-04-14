@@ -22,7 +22,6 @@ public class ViewModelFactory {
 
         loginViewModel = new LoginViewModel();
         tableViewModel = new TableViewModel();
-        tableViewModel = new TableViewModel();
         createBookingViewModel = new CreateBookingViewModel();
         editBookingViewController = new EditBookingViewController();
         viewBookingViewModel = new ViewBookingViewModel();
