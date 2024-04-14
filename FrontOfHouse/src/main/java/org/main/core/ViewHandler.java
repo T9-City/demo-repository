@@ -11,6 +11,8 @@ import javafx.stage.StageStyle;
 import org.main.utils.Views;
 import org.main.view.ViewController;
 import org.main.view.ViewControllerFactory;
+import org.main.view.booking.Booking;
+import org.main.view.booking.editBookings.EditBookingViewController;
 
 public class ViewHandler {
 
@@ -55,6 +57,32 @@ public class ViewHandler {
         viewController = ViewControllerFactory.getViewController(Views.TABLES);
         showView(viewController,null);
     }
+
+    public void openBookingView() {
+        ViewControllerFactory.clearViews();
+        viewController = ViewControllerFactory.getViewController(Views.SHOW_BOOKINGS);
+        showView(viewController,null);
+    }
+
+    public void openCreateBookingView() {
+        ViewControllerFactory.clearViews();
+        viewController = ViewControllerFactory.getViewController(Views.CREATE_BOOKING);
+        showView(viewController,null);
+    }
+
+    public void openEditBookingView(Booking booking) {
+        if (booking.getId() == null) {
+            System.out.println("Warning: Trying to edit a booking without an ID.");
+        }
+        ViewControllerFactory.clearViews();
+        viewController = ViewControllerFactory.getViewController(Views.EDIT_BOOKINGS);
+        EditBookingViewController controller = (EditBookingViewController) ViewControllerFactory.getViewController(Views.EDIT_BOOKINGS);
+        controller.setBooking(booking);
+        showView(viewController,null);
+
+
+    }
+
 
    private void showView(ViewController viewController, Pane pane)
    {
@@ -105,6 +133,7 @@ public class ViewHandler {
            }
        });
    }
+
 
 
 }

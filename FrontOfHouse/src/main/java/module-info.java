@@ -11,4 +11,11 @@ module FrontOfHouse {
     exports org.main.view.table to javafx.graphics, javafx.fxml;
     opens org.main.view.table to javafx.fxml, javafx.base;
     opens org.main.view.login to javafx.fxml, javafx.base;
+
+    opens org.main.view.booking.viewBookings to javafx.fxml, javafx.base;
+    opens org.main.view.booking.createBookings to javafx.fxml, javafx.base;
+    opens org.main.view.booking.editBookings to javafx.fxml, javafx.base;
+    exports org.main.view.booking.viewBookings to javafx.fxml, javafx.graphics;
+    exports org.main.view.booking.createBookings to javafx.fxml, javafx.graphics;
+    exports org.main.view.booking.editBookings to javafx.fxml, javafx.graphics;
 }
