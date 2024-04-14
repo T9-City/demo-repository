@@ -1,6 +1,6 @@
 package org.main.view.table;
 
-import org.main.database.initialCon;
+
 
 import java.sql.*;
 
@@ -12,21 +12,21 @@ import java.sql.SQLException;
 
 
 public class TablesDB {
-    public boolean isTableAvailability(int tableNo) throws SQLException{
-        String SqlQuery = "SELECT booked FROM tablesTest WHERE tableNo = ?";
-        try (Connection conn = initialCon.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(SqlQuery)) {
-            pstmt.setInt(1, tableNo);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getInt("booked") == 0;
-                }
-            }
-        }
-        return false;
-
-    }
-    public void setTableAvailability(){
-
-    }
+    //public boolean isTableAvailability(int tableNo) throws SQLException{
+        //String SqlQuery = "SELECT booked FROM tablesTest WHERE tableNo = ?";
+        //try (Connection conn = initialCon.getConnection();
+        //     PreparedStatement pstmt = conn.prepareStatement(SqlQuery)) {
+        //    pstmt.setInt(1, tableNo);
+        //    try (ResultSet rs = pstmt.executeQuery()) {
+        //        if (rs.next()) {
+        //            return rs.getInt("booked") == 0;
+        //        }
+        //    }
+        //}
+        //return false;
+//
+    //}
+    //public void setTableAvailability(){
+//
+   // }
 }

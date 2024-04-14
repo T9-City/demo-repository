@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import org.main.core.ViewHandler;
 import org.main.core.ViewModelFactory;
@@ -12,7 +14,8 @@ import org.main.view.ViewController;
 
 public class LoginViewController extends ViewController {
 
-   @FXML
+    public ImageView lancasterImageView;
+    @FXML
    private TextField staffNameTextField;
     @FXML
     private AnchorPane currentPane;
@@ -33,6 +36,17 @@ public class LoginViewController extends ViewController {
     }
 
     public void LoginStaff(ActionEvent actionEvent) {
-        loginViewModel.login();
+        if(loginViewModel.login() && roleTextField.textProperty().getValue().equals("Maitre"));
+        viewHandler.openBookingView();
+        if(loginViewModel.login() && roleTextField.textProperty().getValue().equals("Waiter") || roleTextField.textProperty().getValue().equals("Sommelier"))
+            viewHandler.openOrderView();
+    }
+
+    public void onCloseButton(ActionEvent actionEvent) {
+        viewHandler.close();
+    }
+
+    public void onMinimiseButton(ActionEvent actionEvent) {
+        viewHandler.minimize();
     }
 }

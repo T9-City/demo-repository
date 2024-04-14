@@ -19,14 +19,9 @@ public class LoginViewModel {
         management = new ManagementImpl();
     }
 
-    public void login()
+    public boolean login()
     {
-        if(management.loginStaff(staffName.getValue(), role.getValue()));{
-        System.out.println(true);
-        //fire event success
-    }
-        System.out.println(false);
-        //fire event failed
+        return management.loginStaff(staffName.getValue(), role.getValue());
     }
 
 

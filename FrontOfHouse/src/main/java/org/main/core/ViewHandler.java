@@ -39,8 +39,8 @@ public class ViewHandler {
     {
         stage = new Stage();
         if(stage.getScene() == null) stage.initStyle(StageStyle.TRANSPARENT);
-        //openLoginView();
-        openBookingView();
+        openLoginView();
+
     }
 
     public void openLoginView()
@@ -67,6 +67,10 @@ public class ViewHandler {
         viewController = ViewControllerFactory.getViewController(Views.EDIT_BOOKINGS);
         showView(viewController,null);
     }
+
+    public void openOrderView() {
+    }
+
 
 
    private void showView(ViewController viewController, Pane pane)
@@ -120,6 +124,8 @@ public class ViewHandler {
    }
 
 
-
+    public void close() {
+        stage.close();
+    }
 }
 
