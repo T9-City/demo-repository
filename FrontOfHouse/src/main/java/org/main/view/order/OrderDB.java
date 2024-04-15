@@ -4,10 +4,12 @@ package org.main.view.order;
 /**
  * The name of your class may be different, e.g. initCon
  */
-
 import org.main.database.initialCon;
 
+
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class OrderDB {
 
@@ -47,6 +49,19 @@ public class OrderDB {
     public static void addEditedOrder(Integer orderID, float totalPrice,Date date, String allergyInfo,Integer tableNo) throws SQLException {
 
         String sql = "INSERT INTO ordersTest (orderID,total_price,order_Date,allergy_info,tableNo) VALUES (?,?, ?,?,?)";
+        try (Connection conn = initialCon.getConnection();
+             PreparedStatement stm = conn.prepareStatement(sql)) {
+            stm.setInt(1,orderID);
+            stm.setFloat(2, totalPrice);
+            stm.setDate(3,date);
+            stm.setString(4,allergyInfo);
+            stm.setInt(5, tableNo);
+            stm.executeUpdate();
+        }
+    }
+    public static void addPaidOrder(Integer orderID, float totalPrice,Date date, String allergyInfo,Integer tableNo) throws SQLException {
+
+        String sql = "INSERT INTO ordersTest (orderID,total_price,order_Date,allergy_info,tableNo,isPaid) VALUES (?,?, ?,?,?,1)";
         try (Connection conn = initialCon.getConnection();
              PreparedStatement stm = conn.prepareStatement(sql)) {
             stm.setInt(1,orderID);
