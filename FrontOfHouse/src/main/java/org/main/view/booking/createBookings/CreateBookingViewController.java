@@ -2,21 +2,18 @@ package org.main.view.booking.createBookings;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.main.core.ViewHandler;
 import org.main.core.ViewModelFactory;
 import org.main.view.ViewController;
 import org.main.view.booking.Booking;
-import org.main.view.booking.BookingDataAccess;
+import org.main.database.booking.BookingDataAccess;
 import org.main.view.booking.viewBookings.ViewBookingViewModel;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Arrays;
 
 public class CreateBookingViewController extends ViewController {
     @FXML

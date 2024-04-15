@@ -8,9 +8,7 @@ import javafx.stage.Stage;
 import org.main.core.ViewHandler;
 import org.main.view.ViewController;
 import org.main.view.booking.Booking;
-import org.main.view.booking.BookingDataAccess;
-
-import java.time.format.DateTimeFormatter;
+import org.main.database.booking.BookingDataAccess;
 
 public class ViewBookingViewController extends ViewController {
     @FXML
