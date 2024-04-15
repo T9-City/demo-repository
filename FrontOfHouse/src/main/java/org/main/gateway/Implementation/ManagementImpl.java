@@ -11,12 +11,19 @@ public class ManagementImpl implements Management {
 
     ArrayList<Staff> staffList = new ArrayList<>();
 
-    @Override
-    public List<Staff> getAllStaff() {
-        Staff staff = new Staff("Honer", StaffRole.MAITRE);
+    public ManagementImpl()
+    {
+        Staff staff = new Staff("Homer", StaffRole.MAITRE);
         Staff staff1 = new Staff("Laure", StaffRole.SOMMELIER);
         Staff staff2 = new Staff("Bark",StaffRole.WAITER);
-        return staffList;
+        staffList.add(staff);
+        staffList.add(staff1);
+        staffList.add(staff2);
+    }
+
+    @Override
+    public List<Staff> getAllStaff() {
+        return null;
     }
 
     @Override
@@ -25,6 +32,10 @@ public class ManagementImpl implements Management {
     }
 
     public boolean loginStaff(String staffName, String staffRole) {
+        for (Staff staff: staffList)
+                if(staff.getName().equals(staffName) && (staff.getRole().toString().equals(staffRole)))
+                        return true;{
+        }
         return false;
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,7 +14,6 @@
       <Pane layoutX="26.0" layoutY="41.0" prefHeight="319.0" prefWidth="548.0" style="-fx-background-color: #2B3336;">
          <children>
             <Text fill="WHITE" layoutX="159.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role" />
-            <TextField fx:id="roleTextField" layoutX="208.0" layoutY="236.0" />
             <Text fill="WHITE" layoutX="155.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
             <TextField fx:id="staffNameTextField" layoutX="208.0" layoutY="187.0" />
             <ImageView fx:id="lancasterImageView" fitHeight="150.0" fitWidth="200.0" layoutX="199.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -21,6 +21,7 @@
                   <Image url="@lancasterImage.png" />
                </image>
             </ImageView>
+            <ComboBox fx:id="roleComboBox" layoutX="207.0" layoutY="236.0" prefWidth="150.0" />
          </children>
       </Pane>
       <Button fx:id="loginButton" layoutX="534.0" layoutY="361.0" mnemonicParsing="false" onAction="#LoginStaff" text="Login" />

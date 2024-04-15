@@ -21,6 +21,7 @@ public class LoginViewModel {
 
     public boolean login()
     {
+        System.out.println(management.loginStaff(staffName.getValue(), role.getValue()));
         return management.loginStaff(staffName.getValue(), role.getValue());
     }
 
