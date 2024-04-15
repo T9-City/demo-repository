@@ -1,11 +1,10 @@
-package org.main.view.booking;
+package org.main.database.booking;
 
 import org.main.database.DBconnection;
 import org.main.view.booking.Booking;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ public class BookingDataAccess {
             return booking;
         }
 
-        String sql = "INSERT INTO bookingTest (diner_first_name, diner_surname, phone_no, date_reserved, covers, time_reserved, special_booking) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO booking (diner_first_name, diner_surname, phone_no, date_reserved, covers, time_reserved, special_booking) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DBconnection.getConnection();
              PreparedStatement stm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stm.setString(1, booking.getDinerFirstName());
@@ -57,7 +56,7 @@ public class BookingDataAccess {
             throw new IllegalStateException("Booking ID is null, cannot update the database.");
         }
 
-        String sql = "UPDATE bookingTest SET diner_first_name = ?, diner_surname = ?, phone_no = ?, date_reserved = ?, covers = ?, time_reserved = ?, special_booking = ? WHERE booking_id = ?";
+        String sql = "UPDATE booking SET diner_first_name = ?, diner_surname = ?, phone_no = ?, date_reserved = ?, covers = ?, time_reserved = ?, special_booking = ? WHERE booking_id = ?";
         try (Connection conn = DBconnection.getConnection();
              PreparedStatement stm = conn.prepareStatement(sql)) {
             stm.setString(1, booking.getDinerFirstName());
@@ -76,7 +75,7 @@ public class BookingDataAccess {
 
     public List<Booking> getAllBookingDB() throws SQLException {
         List<Booking> bookings = new ArrayList<>();
-        String sql = "SELECT * FROM bookingTest ORDER BY date_reserved ASC, time_reserved ASC ";
+        String sql = "SELECT * FROM booking ORDER BY date_reserved ASC, time_reserved ASC ";
         try (Connection con = DBconnection.getConnection();
              PreparedStatement stm = con.prepareStatement(sql);
              ResultSet rs = stm.executeQuery()) {
@@ -100,7 +99,7 @@ public class BookingDataAccess {
     }
 
     public static void deleteBookingDB(int bookingId) throws SQLException {
-        String sql = "DELETE FROM bookingTest WHERE booking_id = ?";
+        String sql = "DELETE FROM booking WHERE booking_id = ?";
         try (Connection conn = DBconnection.getConnection();
              PreparedStatement stm = conn.prepareStatement(sql)) {
             stm.setInt(1, bookingId);
