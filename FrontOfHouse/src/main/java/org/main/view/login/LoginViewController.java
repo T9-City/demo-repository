@@ -19,8 +19,9 @@ public class LoginViewController extends ViewController {
    private TextField staffNameTextField;
     @FXML
     private AnchorPane currentPane;
+
     @FXML
-    private TextField roleTextField;
+    private ComboBox<String> roleComboBox;
 
     private LoginViewModel loginViewModel;
     private ViewHandler viewHandler;
@@ -30,16 +31,33 @@ public class LoginViewController extends ViewController {
     {
         this.loginViewModel = ViewModelFactory.getInstance().getLoginViewModel();
         this.viewHandler = ViewHandler.getInstance();
+        initComboBox();
         //Add listeners later
+        roleComboBox.valueProperty().bindBidirectional(this.loginViewModel.roleProperty());
         staffNameTextField.textProperty().bindBidirectional(this.loginViewModel.staffNameProperty());
-        roleTextField.textProperty().bindBidirectional(this.loginViewModel.roleProperty());
     }
 
     public void LoginStaff(ActionEvent actionEvent) {
-        if(loginViewModel.login() && roleTextField.textProperty().getValue().equals("Maitre"))
-            viewHandler.openBookingView();
-        if(loginViewModel.login() && roleTextField.textProperty().getValue().equals("Waiter") || roleTextField.textProperty().getValue().equals("Sommelier"))
-            viewHandler.openOrderingView();
+        System.out.println(roleComboBox.getValue());
+        switch(roleComboBox.getValue())
+        {
+            case "MAITRE":
+                if(loginViewModel.login())
+                {
+                    System.out.println(roleComboBox.getValue());
+                    viewHandler.openBookingView();
+                }
+
+                break;
+            case "WAITER","SOMMELIER":
+                if(loginViewModel.login())
+                {
+                    System.out.println(roleComboBox.getValue());
+                    viewHandler.openOrderingView();
+                }
+
+                break;
+        }
     }
 
     public void onCloseButton(ActionEvent actionEvent) {
@@ -48,5 +66,11 @@ public class LoginViewController extends ViewController {
 
     public void onMinimiseButton(ActionEvent actionEvent) {
         viewHandler.minimize();
+    }
+
+    private void initComboBox()
+    {
+        roleComboBox.getItems().addAll("SOMMELIER","WAITER","MAITRE");
+        roleComboBox.getSelectionModel().selectFirst();
     }
 }
