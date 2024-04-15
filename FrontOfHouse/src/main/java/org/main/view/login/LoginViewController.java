@@ -36,8 +36,8 @@ public class LoginViewController extends ViewController {
     }
 
     public void LoginStaff(ActionEvent actionEvent) {
-        if(loginViewModel.login() && roleTextField.textProperty().getValue().equals("Maitre"));
-        viewHandler.openBookingView();
+        if(loginViewModel.login() && roleTextField.textProperty().getValue().equals("Maitre"))
+            viewHandler.openBookingView();
         if(loginViewModel.login() && roleTextField.textProperty().getValue().equals("Waiter") || roleTextField.textProperty().getValue().equals("Sommelier"))
             viewHandler.openOrderingView();
     }
