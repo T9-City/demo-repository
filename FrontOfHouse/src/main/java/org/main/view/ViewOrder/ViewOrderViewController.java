@@ -29,7 +29,7 @@ public class ViewOrderViewController extends ViewController {
     private GridPane ordersGridPane;
     private ViewOrderViewModel viewOrderViewModel;
     private ViewHandler viewHandler;
-
+/*
     public boolean isPayOrder() {
         return payOrder;
     }
@@ -38,7 +38,7 @@ public class ViewOrderViewController extends ViewController {
         this.payOrder = payOrder;
     }
 
-    private boolean payOrder;
+    private boolean payOrder;*/
 
 
     public void init() {

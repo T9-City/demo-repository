@@ -123,7 +123,7 @@ public class ViewOrderDB {
     }
 
     public static void payOrder(Integer orderID,Integer tableNo) throws SQLException {
-        String sql = "UPDATE ordersTest SET isPaid = 1 WHERE orderID = ? AND tableNo = ?";
+        String sql = "UPDATE ordersTest SET isPaid = 1 WHERE orderID = ? AND tableNo = ? AND isPaid = 0";
         try (Connection con = initialCon.getConnection()) {
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setInt(1,orderID);

@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class OrderingViewController extends ViewController {
+    public Button Pay_Button;
     @FXML
     private Button editingOrders_Btn;
     @FXML
@@ -65,7 +66,7 @@ public class OrderingViewController extends ViewController {
 
     private boolean editingOrder = false;
 
-    private boolean payOrder;
+    private boolean payOrderbool;
     private Integer orderID;
 
 
@@ -74,6 +75,8 @@ public class OrderingViewController extends ViewController {
         this.viewHandler = ViewHandler.getInstance();
         setMenu_tableView();
         menuDisplayCard();
+        setUpActions();
+
     }
 
     public Integer getOrderID() {
@@ -191,11 +194,11 @@ public class OrderingViewController extends ViewController {
     }
 
     public boolean isPayOrder() {
-        return payOrder;
+        return payOrderbool;
     }
 
     public void setPayOrder(boolean payOrder) {
-        this.payOrder = payOrder;
+        this.payOrderbool = payOrder;
     }
 
     @FXML
@@ -207,12 +210,18 @@ public class OrderingViewController extends ViewController {
         viewHandler.minimize();
     }
     @FXML
-    public void payOrder(ActionEvent event){
+    public void payOrder(){
         viewHandler.openViewOrders();
-        payOrder = true;
+        payOrderbool = true;
         ViewOrderViewController viewOrderViewController = (ViewOrderViewController) ViewControllerFactory.getViewController(Views.VIEWORDERS);
         viewOrderViewController.getOrder_view_table_label().setText("Select a table's order to pay");
 
+    }
+
+    private void setUpActions(){
+        Pay_Button.setOnAction(e -> {
+            payOrder();
+        });
     }
     @FXML
     public void RemoveItem(ActionEvent event){
