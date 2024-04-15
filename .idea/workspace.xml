@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c076f102-f5ec-4fe5-9f39-40f2173c73b0" name="Changes" comment="Moved BookingDataAccess to new directory. Patched classes">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/ViewOrder/ViewOrderDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/ViewOrder/ViewOrderDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/booking/viewBookings/ViewBookingViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/booking/viewBookings/ViewBookingViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/order/OrderDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/order/OrderDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/table/TableViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/table/TableViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/table/TablesDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/table/TablesDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/resources/org/main/view/booking/viewBookings/ViewBooking.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/resources/org/main/view/booking/viewBookings/ViewBooking.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/resources/org/main/view/order/OrderScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/resources/org/main/view/order/OrderScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/resources/org/main/view/table/TableView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/resources/org/main/view/table/TableView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/application/ApplicationStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/application/ApplicationStart.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +24,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
   <component name="ProjectId" id="2drgAxBclxEUkAp4knsFQ6NY9JM" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -39,22 +34,27 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ApplicationStart.executor": "Run",
     "Git.Branch.Popup.ShowAllRemotes": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/KianP/Desktop/demo-repository",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "configurable.group.appearance"
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="Unnamed" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.main.application.ApplicationStart" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-19.0.2-corretto-19.0.2-4caba194b151-48ba4555" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -67,6 +67,7 @@
       <workItem from="1710771473966" duration="465000" />
       <workItem from="1713135156829" duration="116000" />
       <workItem from="1713172562185" duration="7859000" />
+      <workItem from="1713196172923" duration="234000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1713139814897</created>
