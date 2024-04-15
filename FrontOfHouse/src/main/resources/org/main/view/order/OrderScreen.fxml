@@ -6,7 +6,7 @@
 
 <AnchorPane fx:id="menu_form" prefHeight="415.0" prefWidth="645.0" style="-fx-background-color: #283336;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.view.order.OrderingViewController">
     <children>
-        <AnchorPane layoutX="384.0" layoutY="43.0" prefHeight="358.0" prefWidth="219.0" style="-fx-background-color: #aba7a6;">
+        <AnchorPane layoutX="384.0" layoutY="43.0" prefHeight="358.0" prefWidth="219.0" style="-fx-background-color: #aba7a6;" translateX="-20.0">
             <children>
                 <TableView fx:id="menu_tableView" prefHeight="154.0" prefWidth="241.0">
                     <columns>
@@ -26,11 +26,11 @@
                 <Label fx:id="menu_total" layoutX="73.0" layoutY="275.0" text="£0.00" />
             <Button fx:id="Pay_Button" layoutX="181.0" layoutY="305.0" mnemonicParsing="false" onAction="#payOrder" prefHeight="26.0" prefWidth="49.0" text="Pay" />
             </children></AnchorPane>
-        <AnchorPane layoutX="14.0" layoutY="43.0" prefHeight="358.0" prefWidth="347.0" style="-fx-background-color: #aba7a6;">
+        <AnchorPane layoutX="14.0" layoutY="43.0" prefHeight="358.0" prefWidth="347.0" style="-fx-background-color: #aba7a6;" translateX="-10.0">
             <children>
             <ScrollPane fx:id="menu_scroll" layoutY="-1.0" prefHeight="358.0" prefWidth="347.0">
                <content>
-                  <GridPane fx:id="menu_grid" prefHeight="357.0" prefWidth="346.0">
+                  <GridPane fx:id="menu_grid" prefHeight="357.0" prefWidth="355.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -44,7 +44,7 @@
             </font>
         </Label>
       <Button fx:id="editingOrders_Btn" layoutX="384.0" layoutY="8.0" mnemonicParsing="false" onAction="#openOrders" text="Select Orders" />
-      <Button layoutX="602.0" layoutY="8.0" mnemonicParsing="false" onAction="#close" text="X" />
-      <Button layoutX="573.0" layoutY="8.0" mnemonicParsing="false" onAction="#minimise" text="-" />
+      <Button layoutX="602.0" layoutY="8.0" mnemonicParsing="false" onAction="#close" text="X" translateX="-50.0" />
+      <Button layoutX="573.0" layoutY="8.0" mnemonicParsing="false" onAction="#minimise" text="-" translateX="-50.0" />
     </children>
 </AnchorPane>

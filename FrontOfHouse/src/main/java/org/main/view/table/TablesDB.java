@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class TablesDB {
     public boolean isTableAvailability(int tableNo) throws SQLException{
-        String SqlQuery = "SELECT booked FROM tablesTest WHERE tableNo = ?";
+        String SqlQuery = "SELECT booked FROM tables WHERE tableNo = ?";
         try (Connection conn = DBconnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(SqlQuery)) {
             pstmt.setInt(1, tableNo);
@@ -33,7 +33,7 @@ public class TablesDB {
     public Map<Integer,Boolean> getTableAvailability() throws SQLException{
 
         Map<Integer,Boolean> availabilityMap = new HashMap<>();
-        String Sqlget = "SELECT tableNo, booked FROM tablesTest";
+        String Sqlget = "SELECT tableNo, booked FROM tables";
         try (Connection conn = DBconnection.getConnection();
         PreparedStatement pstmt = conn.prepareStatement(Sqlget);
         ResultSet rs = pstmt.executeQuery()){
@@ -48,7 +48,7 @@ public class TablesDB {
     }
 
     public void setTableAvailability(int tableNo, boolean available) throws SQLException{
-        String sqlUpdate  = "UPDATE tablesTest SET booked = ? WHERE tableNo = ?";
+        String sqlUpdate  = "UPDATE tables SET booked = ? WHERE tableNo = ?";
         try (Connection conn = DBconnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sqlUpdate)){
             pstmt.setInt(1, available?1:0);

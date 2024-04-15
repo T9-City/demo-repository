@@ -31,6 +31,8 @@ public class ViewBookingViewController extends ViewController {
     private Button editBookingButton;
     @FXML
     private Button closeButton;
+    @FXML
+    private Button assignTable;
     private BookingDataAccess bookingDataAccess;
 
     private Booking booking;
@@ -55,12 +57,17 @@ public class ViewBookingViewController extends ViewController {
         super.init();
         initBookingsList();
         closeButton.setOnAction(event -> closeWindow());
+        assignTable.setOnAction(e -> openTableView());
 
         bookingListView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 setBooking(newSelection);
             }
         });
+    }
+
+    private void openTableView() {
+        ViewHandler.getInstance().openTableView();
     }
 
     private void closeWindow() {
@@ -105,14 +112,6 @@ public class ViewBookingViewController extends ViewController {
         ViewHandler.getInstance().openCreateBookingView();
     }
 
-//    @FXML
-//    public void onEditBooking() {
-//        if (bookingListView.getSelectionModel().getSelectedItem() != null) {
-//            ViewHandler.getInstance().openEditBookingView();
-//        } else {
-//            showAlert("Select Booking", "Please select a booking to edit.");
-//        }
-//    }
 
     @FXML
     public void onEditBooking() {

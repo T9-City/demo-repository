@@ -28,6 +28,8 @@ public class TableViewController extends ViewController {
     @FXML
     private Button AssignTable;
 
+
+
     @FXML
     private CheckBox AvailabilityCheckBox1,AvailabilityCheckBox2,AvailabilityCheckBox3,AvailabilityCheckBox4,
             AvailabilityCheckBox5,AvailabilityCheckBox6,AvailabilityCheckBox7,AvailabilityCheckBox8,
@@ -85,6 +87,7 @@ public class TableViewController extends ViewController {
 
 
     public void init(){
+     AssignTable.setOnAction(e -> switchView());
         for (int i = 1; i<=15; i++){
             final int tableNum = i;
             try{
@@ -109,6 +112,10 @@ public class TableViewController extends ViewController {
 
        this.tableViewModel = ViewModelFactory.getInstance().getTableViewModel();
        this.viewHandler = viewHandler.getInstance();
+    }
+
+    private void switchView() {
+     ViewHandler.getInstance().openBookingView();
     }
 
     private void updateTableAvailability(int tableNo, boolean isAvailable, CheckBox checkBox, ImageView imageView){

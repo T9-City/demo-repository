@@ -13,7 +13,7 @@
                     <items>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="190.0">
                             <children>
-                                <Button layoutX="48.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Assign Table" textAlignment="CENTER">
+                                <Button fx:id="AssignTable" layoutX="14.0" layoutY="350.0" mnemonicParsing="false" text="Back" textAlignment="CENTER">
                                     <font>
                                         <Font size="13.0" />
                                     </font></Button>
