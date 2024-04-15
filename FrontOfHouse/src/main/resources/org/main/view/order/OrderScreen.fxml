@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="menu_form" prefHeight="415.0" prefWidth="646.0" style="-fx-background-color: #283336;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.view.order.OrderingViewController">
+<AnchorPane fx:id="menu_form" prefHeight="415.0" prefWidth="645.0" style="-fx-background-color: #283336;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.view.order.OrderingViewController">
     <children>
         <AnchorPane layoutX="384.0" layoutY="43.0" prefHeight="358.0" prefWidth="219.0" style="-fx-background-color: #aba7a6;">
             <children>
@@ -43,6 +43,8 @@
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-      <Button fx:id="editingOrders_Btn" layoutX="550.0" layoutY="8.0" mnemonicParsing="false" onAction="#openOrders" text="Edit Orders" />
+      <Button fx:id="editingOrders_Btn" layoutX="384.0" layoutY="8.0" mnemonicParsing="false" onAction="#openOrders" text="Select Orders" />
+      <Button layoutX="602.0" layoutY="8.0" mnemonicParsing="false" onAction="#close" text="X" />
+      <Button layoutX="573.0" layoutY="8.0" mnemonicParsing="false" onAction="#minimise" text="-" />
     </children>
 </AnchorPane>

@@ -30,22 +30,22 @@ public class ViewOrderViewController extends ViewController {
     private ViewOrderViewModel viewOrderViewModel;
     private ViewHandler viewHandler;
 
-    public boolean isPayOrder() {
-        return payOrder;
+    public boolean isPayOrderboolean() {
+        return payOrderboolean;
     }
 
-    public void setPayOrder(boolean payOrder) {
-        this.payOrder = payOrder;
+    public void setPayOrderboolean(boolean payOrder) {
+        this.payOrderboolean = payOrder;
     }
 
-    private boolean payOrder;
+    private boolean payOrderboolean;
 
 
     public void init() {
         this.viewOrderViewModel = ViewModelFactory.getInstance().getViewOrderViewModel();
         this.viewHandler = ViewHandler.getInstance();
         OrderingViewController orderView = (OrderingViewController) ViewControllerFactory.getViewController(Views.ORDER);
-        if(orderView.isPayOrder()) {
+        if(payOrderboolean) {
             System.out.println("no");
         }
         try {
@@ -54,9 +54,23 @@ public class ViewOrderViewController extends ViewController {
             throw new RuntimeException(e);
         }
     }
+    public void refresh(boolean payOrderbool){
+        if(payOrderbool){
+            payOrderboolean =true;
+        }
+    }
     @FXML
     public void return_to_OrderScreen(ActionEvent event){
         ViewHandler.getInstance().openOrderingView();
+    }
+
+    @FXML
+    public void close(ActionEvent event){
+        viewHandler.close();
+    }
+    @FXML
+    public void minimise(ActionEvent event) {
+        viewHandler.minimize();
     }
 
     public Label getOrder_view_table_label() {
