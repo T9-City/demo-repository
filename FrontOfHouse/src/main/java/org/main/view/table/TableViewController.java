@@ -24,6 +24,9 @@ import java.util.Map;
 public class TableViewController extends ViewController {
 
 
+    @FXML
+    private Button backbutton;
+
     private TablesDB tablesDB = new TablesDB();
     @FXML
     private Button AssignTable;
@@ -46,8 +49,14 @@ public class TableViewController extends ViewController {
     Image TblBlueSq1 = new Image(getClass().getResourceAsStream("BlueSquare.png"));
     Image TblGreySq1 = new Image(getClass().getResourceAsStream("GreySquare.jpg"));
 
- public void handleButtonAction(ActionEvent actionEvent) {
-    }
+
+    public void handleButtonAction(ActionEvent actionEvent) {
+//        tableMap.forEach((checkBox,imageView)->{
+//            int tableNo = extractTableNumberFromCheckBox(checkBox.getId());
+//            boolean isAvailable = checkBox.isSelected();
+//            updateTableAvailability(tableNo,isAvailable,checkBox,imageView);
+//        });
+ }
 
 
     public void ChangeColour(ActionEvent event) throws SQLException {
@@ -55,6 +64,7 @@ public class TableViewController extends ViewController {
         ImageView imageView = tableMap.get(checkBox);
         if (imageView!= null){
             boolean isAvailable = checkBox.isSelected();
+            imageView.setImage(isAvailable? TblBlueSq1:TblGreySq1);
             int tableNo = extractTableNumberFromCheckBox(checkBox.getId());
 
             if(tableNo>0){
@@ -85,6 +95,7 @@ public class TableViewController extends ViewController {
 
 
     public void init(){
+        backbutton.setOnAction(event -> backtoOrder());
         for (int i = 1; i<=15; i++){
             final int tableNum = i;
             try{
@@ -111,13 +122,17 @@ public class TableViewController extends ViewController {
        this.viewHandler = viewHandler.getInstance();
     }
 
+    private void backtoOrder() {
+        ViewHandler.getInstance().openBookingView();
+    }
+
     private void updateTableAvailability(int tableNo, boolean isAvailable, CheckBox checkBox, ImageView imageView){
-            new Thread(()->{
+            new Thread(()->{//does the method on a separate thread so it doesnt wait.
                 try{
                 tablesDB.setTableAvailability(tableNo,!isAvailable);
                 Platform.runLater(()-> {
                     imageView.setImage(isAvailable ? TblBlueSq1 : TblGreySq1);
-                    checkBox.setSelected(isAvailable);
+                   checkBox.setSelected(isAvailable);
                 });
             }catch (SQLException e){
                 e.printStackTrace();
