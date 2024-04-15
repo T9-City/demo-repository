@@ -6,8 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="c076f102-f5ec-4fe5-9f39-40f2173c73b0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/ViewOrder/ViewOrderDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/ViewOrder/ViewOrderDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/ViewOrder/ViewOrderViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/ViewOrder/ViewOrderViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/ViewOrder/tableBtnsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/ViewOrder/tableBtnsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/order/OrderDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/order/OrderDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/order/OrderingViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/java/org/main/view/order/OrderingViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/resources/org/main/view/order/OrderScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/resources/org/main/view/order/OrderScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontOfHouse/src/main/resources/org/main/view/viewOrder/ViewOrder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/FrontOfHouse/src/main/resources/org/main/view/viewOrder/ViewOrder.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +37,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -51,6 +57,14 @@
       <workItem from="1710771473966" duration="465000" />
       <workItem from="1713135156829" duration="116000" />
     </task>
+    <task id="LOCAL-00001" summary="test">
+      <created>1713139814897</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713139814897</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -66,5 +80,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
 </project>

@@ -30,10 +30,13 @@ public class tableBtnsController extends ViewController {
        // System.out.println(ViewOrderDB.getOrderID(tableNo));
         ViewHandler.getInstance().openOrderingView();
         OrderingViewController orderView = (OrderingViewController) ViewControllerFactory.getViewController(Views.ORDER);
+        ViewOrderViewController viewOrderViewController = (ViewOrderViewController) ViewControllerFactory.getViewController(Views.VIEWORDERS);
+
         orderID = ViewOrderDB.getOrderID(tableNo);
-        if(orderView.isPayOrder()) {
+        orderView.setPayOrderID(orderID);
+        if(viewOrderViewController.isPayOrderboolean()) {
             System.out.println("hehjfhjaefjh");
-            ViewOrderDB.payOrder(orderID, tableNo);
+            ViewOrderDB.payOrder(orderID);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Confirmation Message");
@@ -66,10 +69,26 @@ public class tableBtnsController extends ViewController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Confirmation Message");
             alert.setHeaderText(null);
-            alert.setContentText("You are now editing an Order");
+            alert.setContentText("You may now edit and resend an order, or pay for the order");
             alert.showAndWait();
         }
 
+    }
+
+    public void payTable() throws SQLException {
+        ViewHandler.getInstance().openOrderingView();
+        OrderingViewController orderView = (OrderingViewController) ViewControllerFactory.getViewController(Views.ORDER);
+        orderID = ViewOrderDB.getOrderID(tableNo);
+        System.out.println("hehjfhjaefjh");
+        ViewOrderDB.payOrder(orderID);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Confirmation Message");
+        alert.setHeaderText(null);
+        alert.setContentText("You have successfully paid for an order");
+        alert.showAndWait();
+
+        orderView.setPayOrder(false);
     }
 
     public Integer getTableNo() {

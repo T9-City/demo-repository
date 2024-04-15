@@ -122,12 +122,11 @@ public class ViewOrderDB {
         }
     }
 
-    public static void payOrder(Integer orderID,Integer tableNo) throws SQLException {
-        String sql = "UPDATE ordersTest SET isPaid = 1 WHERE orderID = ? AND tableNo = ? AND isPaid = 0";
+    public static void payOrder(Integer orderID) throws SQLException {
+        String sql = "UPDATE ordersTest SET isPaid = 1 WHERE orderID = ?";
         try (Connection con = initialCon.getConnection()) {
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setInt(1,orderID);
-            stm.setInt(2,tableNo);
             stm.executeUpdate();
             stm.close();
         } catch (SQLException e) {

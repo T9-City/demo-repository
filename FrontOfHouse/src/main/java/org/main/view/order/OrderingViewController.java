@@ -16,6 +16,7 @@ import org.main.persistence.Dish;
 import org.main.utils.Views;
 import org.main.view.ViewController;
 import org.main.view.ViewControllerFactory;
+import org.main.view.ViewOrder.ViewOrderDB;
 import org.main.view.ViewOrder.ViewOrderViewController;
 
 import java.io.IOException;
@@ -69,13 +70,21 @@ public class OrderingViewController extends ViewController {
     private boolean payOrderbool;
     private Integer orderID;
 
+    private Integer payOrderID;
 
+
+    public Integer getPayOrderID() {
+        return payOrderID;
+    }
+
+    public void setPayOrderID(Integer payOrderID) {
+        this.payOrderID = payOrderID;
+    }
     public void init() {
         this.orderingViewModel = ViewModelFactory.getInstance().getOrderViewModel();
         this.viewHandler = ViewHandler.getInstance();
         setMenu_tableView();
         menuDisplayCard();
-        setUpActions();
 
     }
 
@@ -189,8 +198,6 @@ public class OrderingViewController extends ViewController {
     @FXML
     public void openOrders(ActionEvent event) throws SQLException {
         viewHandler.openViewOrders();
-        ViewOrderViewController viewOrderViewController = (ViewOrderViewController) ViewControllerFactory.getViewController(Views.VIEWORDERS);
-        viewOrderViewController.getOrder_view_table_label().setText("Select a table's order to edit");
     }
 
     public boolean isPayOrder() {
@@ -210,19 +217,34 @@ public class OrderingViewController extends ViewController {
         viewHandler.minimize();
     }
     @FXML
-    public void payOrder(){
-        viewHandler.openViewOrders();
-        payOrderbool = true;
-        ViewOrderViewController viewOrderViewController = (ViewOrderViewController) ViewControllerFactory.getViewController(Views.VIEWORDERS);
-        viewOrderViewController.getOrder_view_table_label().setText("Select a table's order to pay");
+    public void payOrder(ActionEvent event) throws SQLException {
+        if (menu_tableView.getItems().size() > 0) {
+            String allergyInfo = menu_allergy_info.getText();
+            Integer tableNo = Integer.parseInt(menu_table_num.getText());
+            Date date = new Date();
+            java.sql.Date currentDate = new java.sql.Date(date.getTime());
 
+            OrderDB.addPaidOrder(orderID, total, currentDate, allergyInfo, tableNo);
+
+            for (int i = 0; i < menu_tableView.getItems().size(); i++) {
+                OrderDB.addToDishes(menu_col_DishID.getCellData(i), menu_col_quantity.getCellData(i), orderID);
+            }
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Confirmation Message");
+            alert.setHeaderText(null);
+            alert.setContentText("You have successfully paid for an order");
+            alert.showAndWait();
+
+            menu_allergy_info.clear();
+            menu_table_num.clear();
+            menu_total.setText("£0.00");
+            menu_tableView.getItems().clear();
+            editingOrder = false;
+
+        }
     }
 
-    private void setUpActions(){
-        Pay_Button.setOnAction(e -> {
-            payOrder();
-        });
-    }
     @FXML
     public void RemoveItem(ActionEvent event){
         int selectedID = menu_tableView.getSelectionModel().getSelectedIndex();
