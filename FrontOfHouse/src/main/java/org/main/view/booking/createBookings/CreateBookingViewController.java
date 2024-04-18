@@ -15,7 +15,16 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * Controller class for the CreateBooking view model
+ * Displays a GUI in which a user can fill in details of a booking
+ * User can create a new booking using this GUI
+ */
 public class CreateBookingViewController extends ViewController {
+    /**
+     * Fields for all the buttons, lists, text fields, and combo boxes that are displayed in the GUI
+     * "@FXML" tags so JavaFX knows that these apply to each element in the FXML file
+     */
     @FXML
     private TextField customerFirstNameTextField;
     @FXML
@@ -38,7 +47,14 @@ public class CreateBookingViewController extends ViewController {
     private Button cancelBookingButton;
     private ViewBookingViewModel bookingViewModel;
 
-
+    /**
+     * Initializes the controller calling
+     * {@link #initCoversComboBox()}
+     * ,
+     * {@link #initTimeComboBoxes()}
+     * and
+     * {@link #setUpActions()}
+     */
     @FXML
     public void init(){
         bookingViewModel = ViewModelFactory.getInstance().getBookingViewModel();
@@ -48,6 +64,12 @@ public class CreateBookingViewController extends ViewController {
         setUpActions();
     }
 
+    /**
+     * Method to refresh the window based on if the user checks the special booking checkbox
+     * @param special boolean that states if the booking is a special booking
+     *                if True then {@link #initSpecialBooking()}
+     *                if False then {@link #initCoversComboBox()}, {@link #initTimeComboBoxes()}
+     */
     public void refreshWindow(boolean special) {
 
         customerFirstNameTextField.clear();
@@ -68,7 +90,10 @@ public class CreateBookingViewController extends ViewController {
         }
     }
 
-
+    /**
+     * Method to create listeners for the buttons confirm and cancel
+     * Also creates a listener for the special booking checkbox
+     */
     private void setUpActions(){
         confirmBookingButton.setOnAction(e -> {
             try {
@@ -81,6 +106,10 @@ public class CreateBookingViewController extends ViewController {
         specialComboBox.setOnAction(e -> onSpecialBooking());
     }
 
+    /**
+     * Event called by listener when the special booking combo box is selected
+     * Method calls {@link #refreshWindow(boolean)} based on the special booking checkbox
+     */
     private void onSpecialBooking() {
         if (specialComboBox.isSelected()) {
             refreshWindow(true);
@@ -90,16 +119,31 @@ public class CreateBookingViewController extends ViewController {
         }
     }
 
+    /**
+     * Sets up the covers (Number of guests) combo box for a regular booking
+     * Populates the combobox
+     * Regular booking < 12 guests
+     */
     private void initCoversComboBox() {
         coversComboBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
         coversComboBox.getSelectionModel().selectFirst();
     }
 
+    /**
+     * Sets up the covers (Number of guests) combo box for a special booking
+     * Populates the combobox
+     * Special booking = 12 guests
+     */
     private void initSpecialBooking() {
         coversComboBox.getItems().addAll(12);
         coversComboBox.getSelectionModel().selectFirst();
     }
 
+    /**
+     * Sets up the Hours and Minutes combo boxes so that times can be selected
+     * hoursComboBox is populated with hours spanning from 16:00 to 24:00
+     * minutesComboBox is populated with minutes in increments of 15 minutes
+     */
     private void initTimeComboBoxes() {
         // Populate hours and minutes
         for (int i = 16; i < 24; i++) {
@@ -113,7 +157,12 @@ public class CreateBookingViewController extends ViewController {
         minutesComboBox.getSelectionModel().selectFirst();
     }
 
-
+    /**
+     * Creates a new booking based on the information the user enters
+     * Calls {@link org.main.database.booking.BookingDataAccess#addBookingDB(Booking)} to add booking to database
+     * Clears all text fields in preparation for the next time a new booking is made
+     * @throws SQLException is there is an SQL error
+     */
     private void createBooking() throws SQLException {
         String customerFirstName = customerFirstNameTextField.getText();
         String customerSurname = customerSurnameTextField.getText();
@@ -139,6 +188,12 @@ public class CreateBookingViewController extends ViewController {
         minutesComboBox.getSelectionModel().selectFirst();
     }
 
+    /**
+     * Method to show alerts to the user
+     * Errors, warnings, and info is displayed using this
+     * @param title the title of the alert
+     * @param content the body of the alert
+     */
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -147,6 +202,12 @@ public class CreateBookingViewController extends ViewController {
         alert.showAndWait();
     }
 
+    /**
+     * Event called on by listener on confirm button
+     * Creates the booking by calling the {@link #createBooking()} method
+     * Closes the current view and switches to the original view
+     * @throws SQLException if there is an SQL error
+     */
     @FXML
     private void onConfirmBooking() throws SQLException {
         createBooking();
@@ -155,6 +216,11 @@ public class CreateBookingViewController extends ViewController {
         refreshWindow(false);
     }
 
+    /**
+     * Event called on by listener on cancel button
+     * Refreshes the window to set it up for the next use
+     * Closes the current window and switches back to the original view
+     */
     @FXML
     private void onCancelBooking() {
         ViewHandler.getInstance().openBookingView();
@@ -162,6 +228,9 @@ public class CreateBookingViewController extends ViewController {
         refreshWindow(false);
     }
 
+    /**
+     * Method to close the current window
+     */
     private void closeCurrentWindow() {
         Stage stage = (Stage) confirmBookingButton.getScene().getWindow();
         stage.close();
