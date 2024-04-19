@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import org.main.core.ViewHandler;
 import org.main.core.ViewModelFactory;
 import org.main.view.ViewController;
@@ -15,6 +17,7 @@ import org.main.view.ViewController;
 public class LoginViewController extends ViewController {
 
     public ImageView lancasterImageView;
+    public Text errorText;
     @FXML
    private TextField staffNameTextField;
     @FXML
@@ -58,6 +61,7 @@ public class LoginViewController extends ViewController {
 
                 break;
         }
+        errorText.setText("Something has gone wrong with the login!");
     }
 
     public void onCloseButton(ActionEvent actionEvent) {

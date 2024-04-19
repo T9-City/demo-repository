@@ -1,0 +1,18 @@
+We have used maven, pom.xml is included please build the maven
+project(load as maven project) before running the code.
+
+Use class ApplicationStart to run the project.
+
+To view booking, use:
+- Username: Homer
+- Role: Maitre
+
+To view ordering you may use:
+- Username: Laure
+- Role: Somellier
+
+or
+
+- Username: Bark
+- Role: Waiter
+

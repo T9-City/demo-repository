@@ -38,6 +38,7 @@ public class TablesDB {
         }
         return false;
     }
+
 /**
  * Updates the availability status of a specific table in the database.
  * the method uses an SQL statement to update the "booked" status of the table.
@@ -48,6 +49,7 @@ public class TablesDB {
  * @param tableNo the number of the table to update
  * @[param available the new availablility status to be set, true for available and false for unavailable/booked.
  * @throws SQLException If a database access error happens to occur, or the database connection is close while this runs.*/
+
     public void setTableAvailability(int tableNo, boolean available) throws SQLException{
         String sqlUpdate  = "UPDATE tables SET booked = ? WHERE tableNo = ?";
         try (Connection conn = DBconnection.getConnection();

@@ -31,6 +31,7 @@ public class TableViewController extends ViewController {
  * represents the back Button displayed on the Table plan GUI
  **/
     @FXML
+
     private Button backbutton;
 /**
  * tablesDB uses the TablesDB class to make use of the SQL queries*/
@@ -38,6 +39,7 @@ public class TableViewController extends ViewController {
 /**
  * The CheckBox declaration here is used to
  * reference all the checkboxes created in the fxml file*/
+
     @FXML
     private CheckBox AvailabilityCheckBox1,AvailabilityCheckBox2,AvailabilityCheckBox3,AvailabilityCheckBox4,
             AvailabilityCheckBox5,AvailabilityCheckBox6,AvailabilityCheckBox7,AvailabilityCheckBox8,
@@ -138,6 +140,7 @@ public class TableViewController extends ViewController {
  * Also it iterates through a fixed number of tables (15) as shown via the for loop.*/
     public void init(){
         backbutton.setOnAction(event -> backtoOrder());
+
         for (int i = 1; i<=15; i++){
             final int tableNum = i;
             try{
@@ -163,6 +166,7 @@ public class TableViewController extends ViewController {
        this.tableViewModel = ViewModelFactory.getInstance().getTableViewModel();
        this.viewHandler = viewHandler.getInstance();
     }
+
 /**
  * this method uses the back button to return to the booking UI of the application*/
     private void backtoOrder() {
@@ -177,6 +181,7 @@ public class TableViewController extends ViewController {
  * @param isAvailable the new availability status of the table.
  * @param checkBox the checkbox linked to the respective table.
  * @param imageView the image view which shows the table's status.*/
+
     private void updateTableAvailability(int tableNo, boolean isAvailable, CheckBox checkBox, ImageView imageView){
             new Thread(()->{//does the method on a separate thread so it doesnt wait.
                 try{

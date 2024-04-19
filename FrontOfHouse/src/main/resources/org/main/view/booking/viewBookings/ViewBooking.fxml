@@ -87,6 +87,7 @@
                      </rowConstraints>
                         </GridPane>
                         <Button fx:id="editBookingButton" layoutX="10.0" layoutY="365.0" onAction="#onEditBooking" text="Edit Booking" />
+                  <Button fx:id="assignTable" layoutX="121.0" layoutY="365.0" mnemonicParsing="false" text="Assign Table" />
                     </children>
                 </AnchorPane>
             </items>
