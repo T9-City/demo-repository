@@ -25,13 +25,18 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
+
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2drgAxBclxEUkAp4knsFQ6NY9JM" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.ApplicationStart.executor": "Run",
@@ -57,6 +62,7 @@
     <attachedChunks>
       <set>
         <option value="jdk-19.0.2-corretto-19.0.2-4caba194b151-48ba4555" />
+
       </set>
     </attachedChunks>
   </component>
@@ -73,6 +79,7 @@
       <workItem from="1713172562185" duration="7859000" />
       <workItem from="1713196172923" duration="234000" />
       <workItem from="1713477557729" duration="4548000" />
+
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1713139814897</created>
@@ -81,6 +88,7 @@
       <option name="project" value="LOCAL" />
       <updated>1713139814897</updated>
     </task>
+
     <task id="LOCAL-00002" summary="Moved BookingDataAccess to new directory. Patched classes">
       <created>1713173813730</created>
       <option name="number" value="00002" />
