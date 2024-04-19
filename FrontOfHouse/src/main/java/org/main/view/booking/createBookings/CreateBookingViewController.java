@@ -67,8 +67,11 @@ public class CreateBookingViewController extends ViewController {
     /**
      * Method to refresh the window based on if the user checks the special booking checkbox
      * @param special boolean that states if the booking is a special booking
-     *                if True then {@link #initSpecialBooking()}
-     *                if False then {@link #initCoversComboBox()}, {@link #initTimeComboBoxes()}
+     *                <p>
+     *                If True then {@link #initSpecialBooking()}
+     *                </p> <p>
+     *                If False then {@link #initCoversComboBox()}, {@link #initTimeComboBoxes()}
+     *                </p>
      */
     public void refreshWindow(boolean special) {
 
@@ -161,7 +164,7 @@ public class CreateBookingViewController extends ViewController {
      * Creates a new booking based on the information the user enters
      * Calls {@link org.main.database.booking.BookingDataAccess#addBookingDB(Booking)} to add booking to database
      * Clears all text fields in preparation for the next time a new booking is made
-     * @throws SQLException is there is an SQL error
+     * @throws SQLException if there is an SQL error
      */
     private void createBooking() throws SQLException {
         String customerFirstName = customerFirstNameTextField.getText();
