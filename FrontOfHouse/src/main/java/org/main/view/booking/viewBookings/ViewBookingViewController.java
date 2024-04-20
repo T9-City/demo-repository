@@ -44,6 +44,8 @@ public class ViewBookingViewController extends ViewController {
     private Button closeButton;
     @FXML
     private Button assignTable;
+    @FXML
+    private Button logOutButton;
     private BookingDataAccess bookingDataAccess;
 
     private Booking booking;
@@ -85,6 +87,7 @@ public class ViewBookingViewController extends ViewController {
         initBookingsList();
         closeButton.setOnAction(event -> closeWindow());
         assignTable.setOnAction(e -> openTableView());
+        logOutButton.setOnAction(e -> logOut());
 
         bookingListView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
@@ -99,6 +102,14 @@ public class ViewBookingViewController extends ViewController {
      */
     private void openTableView() {
         ViewHandler.getInstance().openTableView();
+    }
+
+    /**
+     * Method to log out and return to the main login page
+     */
+    private void logOut() {
+        ViewHandler.getInstance().openLoginView();
+        closeWindow();
     }
 
     /**

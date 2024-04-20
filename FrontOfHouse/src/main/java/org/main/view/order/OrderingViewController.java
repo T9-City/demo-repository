@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import org.main.core.ViewHandler;
 import org.main.core.ViewModelFactory;
 
@@ -48,6 +49,9 @@ public class OrderingViewController extends ViewController {
     @FXML
     private Button menu_Remove_Btn;
 
+    @FXML
+    private Button logOutButton;
+
 
     @FXML
     private TextField menu_allergy_info;
@@ -83,9 +87,17 @@ public class OrderingViewController extends ViewController {
     public void init() {
         this.orderingViewModel = ViewModelFactory.getInstance().getOrderViewModel();
         this.viewHandler = ViewHandler.getInstance();
+        logOutButton.setOnAction(e -> logOut());
         setMenu_tableView();
         menuDisplayCard();
 
+    }
+
+    /**
+     * Method to log out and return to the main login page
+     */
+    private void logOut() {
+        ViewHandler.getInstance().openLoginView();
     }
 
     public Integer getOrderID() {
