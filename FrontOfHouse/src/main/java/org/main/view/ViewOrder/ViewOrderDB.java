@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ViewOrderDB {
     public static ArrayList<Integer> gettableIDs() throws SQLException {
         ArrayList<Integer> tableNums = new ArrayList<>();
-        String sql = "SELECT tableNo FROM ordersTest WHERE isPaid = 0 ORDER BY tableNo ASC ";
+        String sql = "SELECT tableNo FROM orders WHERE isPaid = 0 ORDER BY tableNo ASC ";
         try (Connection con = initialCon.getConnection()) {
             PreparedStatement stm = con.prepareStatement(sql);
             ResultSet values = stm.executeQuery(sql);
@@ -29,7 +29,7 @@ public class ViewOrderDB {
         return null;
     }
     public static Integer getOrderID(Integer tableNo) throws SQLException {
-        String sql = "SELECT orderID FROM ordersTest WHERE tableNo = '" + tableNo +"' AND isPaid = 0";
+        String sql = "SELECT orderID FROM orders WHERE tableNo = '" + tableNo +"' AND isPaid = 0";
         try (Connection con = initialCon.getConnection()) {
             PreparedStatement stm = con.prepareStatement(sql);
             ResultSet values = stm.executeQuery(sql);
@@ -45,7 +45,7 @@ public class ViewOrderDB {
     }
 
     public static String getAllergyInfo(Integer orderID) throws SQLException {
-        String sql = "SELECT allergy_info FROM ordersTest WHERE orderID = '" + orderID+ "'";
+        String sql = "SELECT allergy_info FROM orders WHERE orderID = '" + orderID+ "'";
         try (Connection con = initialCon.getConnection()) {
             PreparedStatement stm = con.prepareStatement(sql);
             ResultSet values = stm.executeQuery(sql);
@@ -63,7 +63,7 @@ public class ViewOrderDB {
 
     public static ArrayList<Integer> getDishID(Integer orderID) throws SQLException {
         ArrayList<Integer> dishIDs = new ArrayList<>();
-        String sql = "SELECT dishID FROM dishesTest WHERE orderID = '" + orderID+ "'";
+        String sql = "SELECT dishID FROM dishes WHERE orderID = '" + orderID+ "'";
         try (Connection con = initialCon.getConnection()) {
             PreparedStatement stm = con.prepareStatement(sql);
             ResultSet values = stm.executeQuery(sql);
@@ -83,7 +83,7 @@ public class ViewOrderDB {
 
     public static ArrayList<Integer> getQuantity(Integer orderID) throws SQLException {
         ArrayList<Integer> quantities = new ArrayList<>();
-        String sql = "SELECT quantity FROM dishesTest WHERE orderID = '" + orderID+ "'";
+        String sql = "SELECT quantity FROM dishes WHERE orderID = '" + orderID+ "'";
         try (Connection con = initialCon.getConnection()) {
             PreparedStatement stm = con.prepareStatement(sql);
             ResultSet values = stm.executeQuery(sql);
@@ -102,7 +102,7 @@ public class ViewOrderDB {
     }
 
     public static void deleteOrderDishes(Integer orderID) throws SQLException {
-        String sql = "DELETE FROM dishesTest WHERE orderID = '" + orderID+ "'";
+        String sql = "DELETE FROM dishes WHERE orderID = '" + orderID+ "'";
         try (Connection con = initialCon.getConnection()) {
             PreparedStatement stm = con.prepareStatement(sql);
             stm.executeUpdate();
@@ -112,7 +112,7 @@ public class ViewOrderDB {
         }
     }
     public static void deleteOrder(Integer orderID) throws SQLException {
-        String sql = "DELETE FROM ordersTest WHERE orderID = '" + orderID+ "'";
+        String sql = "DELETE FROM orders WHERE orderID = '" + orderID+ "'";
         try (Connection con = initialCon.getConnection()) {
             PreparedStatement stm = con.prepareStatement(sql);
             stm.executeUpdate();
@@ -123,7 +123,7 @@ public class ViewOrderDB {
     }
 
     public static void payOrder(Integer orderID) throws SQLException {
-        String sql = "UPDATE ordersTest SET isPaid = 1 WHERE orderID = ?";
+        String sql = "UPDATE orders SET isPaid = 1 WHERE orderID = ?";
         try (Connection con = initialCon.getConnection()) {
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setInt(1,orderID);

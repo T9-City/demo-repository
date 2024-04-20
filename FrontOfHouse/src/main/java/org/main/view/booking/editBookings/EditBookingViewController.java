@@ -13,7 +13,17 @@ import org.main.view.ViewController;
 import org.main.view.booking.Booking;
 import org.main.database.booking.BookingDataAccess;
 
+/**
+ * Controller class for the EditBooking view model
+ * Displays the selected booking on the GUI in editable fields
+ * User can amend bookings using this view
+ */
+
 public class EditBookingViewController extends ViewController {
+    /**
+     * Fields for all the buttons, lists, text fields, and combo boxes that are displayed in the GUI
+     * "@FXML" tags so JavaFX knows that these apply to each element in the FXML file
+     */
     @FXML
     private TextField customerFirstNameTextField;
     @FXML
@@ -39,6 +49,12 @@ public class EditBookingViewController extends ViewController {
 
     private Booking currentBooking;
 
+    /**
+     * Initializes the controller calling
+     * {@link #setUpActions()}
+     * and
+     * {@link #initTimeComboBoxes()}
+     */
     @Override
     public void init() {
         super.init();
@@ -46,6 +62,9 @@ public class EditBookingViewController extends ViewController {
         initTimeComboBoxes();
     }
 
+    /**
+     * Method to add listeners to the buttons confirm, cancel, and delete
+     */
     private void setUpActions(){
         confirmBookingButton.setOnAction(e -> {
             onConfirmBooking();
@@ -54,13 +73,18 @@ public class EditBookingViewController extends ViewController {
         deleteBookingButton.setOnAction(e -> onDeleteBooking());
     }
 
-
-
+    /**
+     * Setter for the Booking object
+     * @param booking the booking that is passed into this view so that it can be edited
+     */
     public void setBooking(Booking booking) {
         this.currentBooking = booking;
         updateFields();
     }
 
+    /**
+     * Populating the text fields and combo boxes with the information from the selected booking
+     */
     private void updateFields() {
         customerFirstNameTextField.setText(currentBooking.getDinerFirstName());
         customerSurnameTextField.setText(currentBooking.getDinerSurname());
@@ -73,16 +97,23 @@ public class EditBookingViewController extends ViewController {
 
         coversComboBox.setValue(currentBooking.getCovers());
         specialComboBox.setSelected(currentBooking.getSpecialBooking());
-
-
     }
 
+    /**
+     * Event called on by the listener on the cancel button
+     * Closes the window and return to original window
+     */
     @FXML
     private void onCancelBooking() {
         ViewHandler.getInstance().openBookingView();
         closeCurrentWindow();
     }
 
+    /**
+     * Event called on by the listener on the confirm button
+     * Trys to call {@link #GetFromTextFields()} which updates the database
+     * Closes the current window and switches back to the original view
+     */
     @FXML
     private void onConfirmBooking() {
         try {
@@ -96,6 +127,14 @@ public class EditBookingViewController extends ViewController {
         }
     }
 
+    /**
+     * Event called on by the listener of the delete button
+     * Checks if a booking is selected, and has an ID
+     * Produces a confirmation window to make sure the user is sure they want to delete the booking
+     * @see #showConfirmationDialog(String, String)
+     * Trys to call {@link org.main.database.booking.BookingDataAccess#deleteBookingDB(int)}
+     * Catchs any SQL exception there may be
+     */
     @FXML
     private void onDeleteBooking() {
         if (currentBooking == null || currentBooking.getId() == null) {
@@ -103,12 +142,10 @@ public class EditBookingViewController extends ViewController {
             return;
         }
 
-
         boolean confirm = showConfirmationDialog("Confirm Deletion", "Are you sure you want to delete this booking?");
         if (!confirm) {
             return;
         }
-
 
         try {
             BookingDataAccess.deleteBookingDB(currentBooking.getId());
@@ -121,7 +158,11 @@ public class EditBookingViewController extends ViewController {
     }
 
 
-
+    /**
+     * Method gets all information from text fields, combo boxes and date picker
+     * Calls method {@link org.main.database.booking.BookingDataAccess#updateBookingDB(Booking)} to update the booking in the database
+     * @throws SQLException if there is an SQL error
+     */
     private void GetFromTextFields() throws SQLException {
         currentBooking.setDinerFirstName(customerFirstNameTextField.getText());
         currentBooking.setDinerSurname(customerSurnameTextField.getText());
@@ -134,6 +175,11 @@ public class EditBookingViewController extends ViewController {
         BookingDataAccess.updateBookingDB(currentBooking);
     }
 
+    /**
+     * Sets up the Hours and Minutes combo boxes so that times can be selected
+     * hoursComboBox is populated with hours spanning from 16:00 to 24:00
+     * minutesComboBox is populated with minutes in increments of 15 minutes
+     */
     private void initTimeComboBoxes() {
         for (int i = 0; i < 24; i++) {
             hoursComboBox.getItems().add(String.format("%02d", i));
@@ -143,11 +189,20 @@ public class EditBookingViewController extends ViewController {
         }
     }
 
+    /**
+     * Method to close the current window
+     */
     private void closeCurrentWindow() {
         Stage stage = (Stage) confirmBookingButton.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Method to show alerts to the user
+     * Errors, warnings, and info is displayed using this
+     * @param title the title of the alert
+     * @param content the body of the alert
+     */
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -156,6 +211,12 @@ public class EditBookingViewController extends ViewController {
         alert.showAndWait();
     }
 
+    /**
+     * Type of {@link Alert} used as a conformation dialog
+     * @param title the title of the alert
+     * @param content the body of the alert
+     * @return result the button which the user decides to press
+     */
     private boolean showConfirmationDialog(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(title);
