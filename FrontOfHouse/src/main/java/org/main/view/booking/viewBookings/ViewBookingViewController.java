@@ -112,11 +112,13 @@ public class ViewBookingViewController extends ViewController {
      * Initialises the list of bookings
      * Gets all bookings from the database
      * @see BookingDataAccess#getAllBookingDB()
+     *
      */
     public void initBookingsList() {
         try {
             ObservableList<Booking> bookings = FXCollections.observableArrayList(bookingDataAccess.getAllBookingDB());
 
+            // Set a cell factory to display only the name and time of each booking
             bookingListView.setCellFactory(lv -> new ListCell<Booking>() {
                 @Override
                 protected void updateItem(Booking booking, boolean empty) {
@@ -124,6 +126,7 @@ public class ViewBookingViewController extends ViewController {
                     if (empty || booking == null) {
                         setText(null);
                     } else {
+                        // Assuming that you have getter methods in Booking class
                         String displayText = String.format("%s %s\n%s\n%s",
                                 booking.getDinerFirstName(),
                                 booking.getDinerSurname(),
