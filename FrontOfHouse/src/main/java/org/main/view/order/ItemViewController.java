@@ -17,10 +17,19 @@ import org.main.persistence.Dish;
 import org.main.utils.Views;
 import org.main.view.ViewController;
 import org.main.view.ViewControllerFactory;
+import org.main.view.booking.Booking;
 
 import java.io.IOException;
 
+/**
+ * The ItemViewController class controls the interaction between the user and item data within the order view.
+ * It handles the display of item details and allows users to add items to an order.
+ */
 public class ItemViewController  extends ViewController {
+    /**
+     * Fields for all the buttons, panes, labels and spinners that are displayed in the GUI
+     * "@FXML" tags so JavaFX knows that these apply to each element in the FXML file
+     */
     @FXML
     private AnchorPane item_Form;
     @FXML
@@ -40,11 +49,10 @@ public class ItemViewController  extends ViewController {
     private int quantity;
 
 
-
-
-
-
-
+    /**
+     * Sets the item data and updates the view to display the item's details.
+     * @param dishData The data of the dish to be displayed.
+     */
     public void setItemData(Dish dishData){
         this.ItemData = dishData;
         setQuantity();
@@ -56,12 +64,21 @@ public class ItemViewController  extends ViewController {
         }
     }
 
-
+    /**
+     * Initializes the quantity spinner with values from 0 to 100.
+     */
     public void setQuantity(){
         spin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,100,0);
         item_amountSpnr.setValueFactory(spin);
     }
-
+    /**
+     * when the user clicks the add button on an item this event will happen.
+     * if a correct quantity is entered and the dish is available
+     * Call{@link org.main.view.order.OrderingViewController#updateTable(String, Integer, Integer, Integer)
+     * to add the items detail and quantity to the ordering table}
+     * @param event The mouse event triggering the action.
+     * @throws IOException If an I/O error occurs.
+     */
     @FXML
     public void addToTable(MouseEvent event) throws IOException {
         quantity = item_amountSpnr.getValue();

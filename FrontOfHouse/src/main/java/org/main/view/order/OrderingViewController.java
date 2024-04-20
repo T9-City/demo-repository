@@ -19,14 +19,24 @@ import org.main.view.ViewController;
 import org.main.view.ViewControllerFactory;
 import org.main.view.ViewOrder.ViewOrderDB;
 import org.main.view.ViewOrder.ViewOrderViewController;
+import org.main.view.booking.Booking;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+/**
+ * The OrderingViewController class manages the order creation process.
+ * It allows users to create orders, update the order tables with order information, and manage order details.
+ * allows the user to send orders, pay orders
+ */
 
 public class OrderingViewController extends ViewController {
     public Button Pay_Button;
+    /**
+     * Fields for all the buttons, panes, labels and tables that are displayed in the GUI
+     * "@FXML" tags so JavaFX knows that these apply to each element in the FXML file
+     */
     @FXML
     private Button editingOrders_Btn;
     @FXML
@@ -81,9 +91,17 @@ public class OrderingViewController extends ViewController {
         return payOrderID;
     }
 
+    /**
+     * @param payOrderID sets the ID for the order that is being paid
+     */
     public void setPayOrderID(Integer payOrderID) {
         this.payOrderID = payOrderID;
     }
+
+    /**
+     * Initializes the OrderingViewController by setting up the order
+     * view model, view handler, and displaying menu items and setting up the table
+     */
     public void init() {
         this.orderingViewModel = ViewModelFactory.getInstance().getOrderViewModel();
         this.viewHandler = ViewHandler.getInstance();
@@ -104,13 +122,23 @@ public class OrderingViewController extends ViewController {
         return orderID;
     }
 
+    /**
+     * @param orderID order ID is passed to set the orderID for the order selected
+     */
     public void setOrderID(Integer orderID) {
         this.orderID = orderID;
     }
+
+    /**
+     * @param tablenum is passed to set the table number after an order is selected
+     */
     public void setMenu_table_num_Text(String tablenum) {
         menu_table_num.setText(tablenum);
     }
 
+    /**
+     * @param allergy_info is passed to set the allergy info after an order is selected
+     */
     public void setMenu_allergy_info_Text(String allergy_info) {
         menu_allergy_info.setText(allergy_info);
     }
@@ -118,11 +146,16 @@ public class OrderingViewController extends ViewController {
         return editingOrder;
     }
 
+    /**
+     * @param editingOrder is used to signify an order is being edited
+     */
     public void setEditingOrder(boolean editingOrder) {
         this.editingOrder = editingOrder;
     }
 
-
+    /**
+     * @return the menu for the items
+     */
     public ArrayList<Dish> returnMenu() {
         ArrayList<String> ingredients = new ArrayList<String>();
         ingredients.add("meat");
@@ -167,6 +200,11 @@ public class OrderingViewController extends ViewController {
         return menu;
     }
 
+    /**
+     * is used to display all the items and its information onto the ordering panel
+     * and will add it in rows
+     * Calls{@link org.main.view.order.ItemViewController#setItemData(Dish)} to get the data for each item
+     */
     public void menuDisplayCard() {
         menu = returnMenu();
 
@@ -201,12 +239,21 @@ public class OrderingViewController extends ViewController {
         }
     }
 
+    /**
+     * set the values for the ordering table
+     */
     public void setMenu_tableView() {
         menu_col_product.setCellValueFactory(new PropertyValueFactory<Order, String>("Product"));
         menu_col_price.setCellValueFactory(new PropertyValueFactory<Order, Integer>("Price"));
         menu_col_quantity.setCellValueFactory(new PropertyValueFactory<Order, Integer>("Quantity"));
         menu_col_DishID.setCellValueFactory(new PropertyValueFactory<Order,Integer>("DishID"));
     }
+
+    /**
+     * is used for the select orders button to go and select an order to edit or pay
+     * @param event
+     * @throws SQLException
+     */
     @FXML
     public void openOrders(ActionEvent event) throws SQLException {
         viewHandler.openViewOrders();
@@ -216,18 +263,35 @@ public class OrderingViewController extends ViewController {
         return payOrderbool;
     }
 
+    /**
+     * @param payOrder is passed to determine whether or not you are paying for an order
+     */
     public void setPayOrder(boolean payOrder) {
         this.payOrderbool = payOrder;
     }
 
+    /**
+     * @param event when the X button is pressed the view will close
+     */
     @FXML
     public void close(ActionEvent event){
         viewHandler.close();
     }
+
+    /**
+     * @param event when the - button is pressed the view will minimise
+     */
     @FXML
     public void minimise(ActionEvent event) {
         viewHandler.minimize();
     }
+
+    /**
+     * @param event when an order has been selected and the pay button is pressed it will
+     * call {@link  org.main.view.order.OrderDB#addPaidOrder(Integer, float, java.sql.Date, String, Integer)}
+     * to make the order now paid for in the database
+     * @throws SQLException
+     */
     @FXML
     public void payOrder(ActionEvent event) throws SQLException {
         if (menu_tableView.getItems().size() > 0) {
@@ -257,12 +321,24 @@ public class OrderingViewController extends ViewController {
         }
     }
 
+    /**
+     * @param event when an item is selected on the ordering view and the remove button is pressed
+     * the item will get removed from the table
+     */
     @FXML
     public void RemoveItem(ActionEvent event){
         int selectedID = menu_tableView.getSelectionModel().getSelectedIndex();
         menu_tableView.getItems().remove(selectedID);
         calcTotal();
     }
+
+    /**
+     * @param event when an items have been added to the ordering table and the send order button is pressed it will call
+     * Calls {@link org.main.view.order.OrderDB#addToOrder(float, java.sql.Date, String, Integer)} and
+     * Calls{@link org.main.view.order.OrderDB#addToDishes(Integer, Integer, Integer)
+     * to add the order details and the dishes of the order to the database}
+     * @throws SQLException
+     */
     @FXML
     public void sendOrder(ActionEvent event) throws SQLException {
         if (menu_tableView.getItems().size()>0) {
@@ -294,6 +370,14 @@ public class OrderingViewController extends ViewController {
         editingOrder = false;
     }
 
+    /**
+     * is used to add items to the ordering table
+     * @param product the name of the item ordered
+     * @param quantity the amount of the item ordered
+     * @param price the total price for the amount of an item ordered
+     * @param dishID the dishID of the item ordered
+     * @throws IOException
+     */
     public void updateTable(String product, Integer quantity, Integer price,Integer dishID) throws IOException {
             Order order = new Order(product, quantity, price, dishID);
             ObservableList<Order> orders = menu_tableView.getItems();
@@ -302,7 +386,10 @@ public class OrderingViewController extends ViewController {
             calcTotal();
         }
 
-        public void calcTotal(){
+    /**
+     * used to calculate the total price of the order and change its text
+     */
+    public void calcTotal(){
         total = 0;
         for(int i =0; i <menu_tableView.getItems().size();i++){
             total += menu_col_price.getCellData(i);

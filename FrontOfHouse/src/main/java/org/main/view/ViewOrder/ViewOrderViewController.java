@@ -77,6 +77,11 @@ public class ViewOrderViewController extends ViewController {
         return order_view_table_label;
     }
 
+    /**
+     * for the select order view it will create buttons for each table that have an unpaid order and
+     * each table will have button that contains that tables order
+     * @throws SQLException
+     */
     public void createTableBtns() throws SQLException {
         int row = 0;
         int column = 0;

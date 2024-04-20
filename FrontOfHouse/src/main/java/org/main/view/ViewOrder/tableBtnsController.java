@@ -24,7 +24,12 @@ public class tableBtnsController extends ViewController {
     private Integer tableNo;
     private Integer orderID;
 
-
+    /**
+     * @param event when a table is selected it will use the database to get all the details
+     * of the order for the table, including items ordered, allergy info, orderID, table no
+     * @throws SQLException
+     * @throws IOException
+     */
     @FXML
     public void getTableOrder(ActionEvent event) throws SQLException, IOException {
        // System.out.println(ViewOrderDB.getOrderID(tableNo));
@@ -35,7 +40,6 @@ public class tableBtnsController extends ViewController {
         orderID = ViewOrderDB.getOrderID(tableNo);
         orderView.setPayOrderID(orderID);
         if(viewOrderViewController.isPayOrderboolean()) {
-            System.out.println("hehjfhjaefjh");
             ViewOrderDB.payOrder(orderID);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -95,10 +99,16 @@ public class tableBtnsController extends ViewController {
         return tableNo;
     }
 
+    /**
+     * @param tableNo is passed to set the table number for when an order is selected
+     */
     public void setTableNo(Integer tableNo) {
         this.tableNo = tableNo;
     }
 
+    /**
+     * @return returns the table number
+     */
     public Button getTableNoBtn() {
         return tableNoBtn;
     }
