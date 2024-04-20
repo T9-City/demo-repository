@@ -62,6 +62,7 @@ public class ViewHandler {
         stage = new Stage();
         if(stage.getScene() == null) stage.initStyle(StageStyle.TRANSPARENT);
         openLoginView();
+        //openTableView();
     }
 
     /**
