@@ -37,10 +37,11 @@ public class Menu {
      *    Menu menu = new Menu(dishes, ZonedDateTime.now().plusDays(7));
      * </pre>
      */
-    protected Menu(ArrayList<Dish> dishes, ZonedDateTime nextMenuUpdate) {
+    public Menu(ArrayList<Dish> dishes, ZonedDateTime nextMenuUpdate) {
         this.dishes = dishes;
         this.nextMenuUpdate = nextMenuUpdate;
     }
+
 
     /**
      * Returns the list of dishes in the menu.

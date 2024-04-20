@@ -8,6 +8,14 @@ import org.main.view.login.LoginViewModel;
 import org.main.view.order.OrderingViewModel;
 import org.main.view.table.TableViewModel;
 
+/**
+ * @author Mihail Constantin
+ * @author Kian Pflitsch
+ * @author Muhhamed Siddique
+ * @author  Jahir Amir
+ * @version 1.0
+ * Factory Class that initialises and stores all the ViewModel.
+ */
 public class ViewModelFactory {
 
     private final LoginViewModel loginViewModel;
@@ -24,7 +32,9 @@ public class ViewModelFactory {
     private final EditBookingViewController editBookingViewController;
     private final ViewBookingViewModel viewBookingViewModel;
 
-
+    /**
+     * Custom Constructor that initialises all the ViewModels
+     */
     private ViewModelFactory(){
 
         loginViewModel = new LoginViewModel();
@@ -37,6 +47,10 @@ public class ViewModelFactory {
 
     }
 
+    /**
+     * Singleton implementation of the ViewModelFactory
+     * @return This instance of ViewModelFactory
+     */
     public static ViewModelFactory getInstance()
     {
         if(viewModelFactory == null)
@@ -45,17 +59,19 @@ public class ViewModelFactory {
     }
 
     public TableViewModel getTableViewModel(){return tableViewModel;}
+
     public LoginViewModel getLoginViewModel() {
         return loginViewModel;
     }
 
-
     public ViewBookingViewModel getBookingViewModel() {
         return viewBookingViewModel;
     }
+
     public OrderingViewModel getOrderViewModel() {
         return orderViewModel;
     }
+
     public ViewOrderViewModel getViewOrderViewModel() {
         return viewOrderViewModel;
     }
