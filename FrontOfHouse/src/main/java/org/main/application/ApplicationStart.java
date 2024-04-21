@@ -8,14 +8,14 @@ import javafx.application.Application;
  * @version 1.0
  * Main Application Class
  */
+
+
 public class ApplicationStart {
+
     /**
      *Main method that starts the GUI
      * @param args
      */
-
-public class ApplicationStart {
-
     public static void main(String[] args) {
         Application.launch(GUIApplication.class);
     }
