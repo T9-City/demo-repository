@@ -13,9 +13,6 @@ public class ApplicationStart {
      *Main method that starts the GUI
      * @param args
      */
-
-public class ApplicationStart {
-
     public static void main(String[] args) {
         Application.launch(GUIApplication.class);
     }

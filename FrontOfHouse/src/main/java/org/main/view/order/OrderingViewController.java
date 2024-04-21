@@ -208,10 +208,8 @@ public class OrderingViewController extends ViewController {
     public void menuDisplayCard() {
         menu = returnMenu();
 
-
         int row = 0;
         int column = 0;
-
 
         menu_grid.getRowConstraints().clear();
         menu_grid.getColumnConstraints().clear();
@@ -223,12 +221,10 @@ public class OrderingViewController extends ViewController {
                 AnchorPane pane = loader.load();
                 ItemViewController Item = loader.getController();
                 Item.setItemData(menu.get(i));
-
                 if (column == 2) {
                     column = 0;
                     row += 1;
                 }
-
                 menu_grid.add(pane, column++, row);
 
                 GridPane.setMargin(pane, new Insets(10));
