@@ -75,10 +75,7 @@ public class CreateBookingViewController extends ViewController {
      */
     public void refreshWindow(boolean special) {
 
-        customerFirstNameTextField.clear();
-        customerSurnameTextField.clear();
-        phoneNumberTextField.clear();
-        bookingDatePicker.setValue(null);
+        coversComboBox.getItems().removeAll();
 
         coversComboBox.getSelectionModel().selectFirst();
         hoursComboBox.getSelectionModel().selectFirst();
@@ -89,7 +86,6 @@ public class CreateBookingViewController extends ViewController {
         }
         else {
             initCoversComboBox();
-            initTimeComboBoxes();
         }
     }
 

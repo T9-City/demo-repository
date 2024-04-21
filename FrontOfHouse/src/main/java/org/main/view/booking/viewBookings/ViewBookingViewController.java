@@ -55,6 +55,7 @@ public class ViewBookingViewController extends ViewController {
      * Constructor to initialize the BookingDataAccess object
      */
     public ViewBookingViewController() {
+
         bookingDataAccess = new BookingDataAccess();
     }
 
